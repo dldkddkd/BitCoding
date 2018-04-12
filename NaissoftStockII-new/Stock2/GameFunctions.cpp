@@ -199,7 +199,6 @@ void showTipNews()
 
 void buyMenu(int order)
 {
-	char ch;
 	int amount;
 
 	system("cls");
@@ -244,7 +243,7 @@ void sellMenu()
 	
 		printf("\n [ 선택 주식 정보 ]\n\n 번호 : %d\n 회사 : %s\n 가격 : %d\n 현재 가격 : %d\n 매도 이익 : %d", idx, CompanyName[f->company], f->price, StockPrice[f->company], StockPrice[f->company] - f->price);
 		
-		ch = getch();
+		ch = (char)_getch();
 		
 		switch (ch)
 		{
@@ -293,9 +292,9 @@ void getKey(char *c)
 {
 	if (!timemode)
 	{
-		if (kbhit()) *c = getch();
+		if (_kbhit()) *c = (char)_getch();
 	}
-	else *c = getch();
+	else *c = (char)_getch();
 }
 
 void settingMenu()
@@ -305,7 +304,7 @@ void settingMenu()
 	titleLine("설  정");
 	printf(" 1. 보기 모드 전환\n 2. 시간 흐름 방식 전환\n Esc 돌아가기");
 	
-	select = getch();
+	select = (char)_getch();
 
 	switch (select)
 	{
@@ -376,7 +375,7 @@ void showCompanyInfo()
 		printf(" %d / %d. W, S 키로 넘겨 볼 수 있습니다. Esc로 나가기\n 회사 : %s\n\n", i + 1, MAX_COMPANY, CompanyName[i]);
 		printf("%s", Infos[i]);
 
-		ch = getch();
+		ch = (char)_getch();
 
 		switch (ch)
 		{
@@ -445,7 +444,7 @@ void drawNewspaper(int comp)
 	for (int i = 0; i < 25; i++)
 	{
 		gotoxy(75, 10 + i);
-		for (int j = 0; j < 40; j++) putch(' ');
+		for (int j = 0; j < 40; j++) _putch(' ');
 	}
 	
 	gotoxy(88, 12);

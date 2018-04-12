@@ -6,13 +6,13 @@
 
 void gotoxy(int x, int y)
 {
-	COORD pos = { x, y };
+	COORD pos = { (short)x, (short)y };
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 }
 
 void textcolor(int color_number)
 {
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color_number);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (WORD)color_number);
 }
 
 void setcursortype(CURSOR_TYPE c)
@@ -44,7 +44,7 @@ void type_effect(char *str, int delay)
 
 void clearbuffer()
 {
-	while (kbhit()) getch();
+	while (_kbhit()) _getch();
 }
 
 void titleLine(const char *title)

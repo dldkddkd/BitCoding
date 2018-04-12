@@ -82,7 +82,7 @@ int main(void)
 			titleLine("일시 정지");
 			printf(" 1. 통  계\n\n 2. 대  출\n\n 3. 갚  기\n\n 4. 설  정\n\n 5. 끝내기\n\n Esc 돌아가기");
 
-			pausemenu = getch();
+			pausemenu = (char)_getch();
 			
 			switch (pausemenu)
 			{
@@ -102,7 +102,7 @@ int main(void)
 				system("cls");
 				printf("\n 종료하시겠습니까? 저장되지 않은 정보는 사라집니다.\n Y / N");
 				char ch;
-				ch = getch();
+				ch = (char)_getch();
 				if (ch == 'Y' || ch == 'y') return 0;
 				break;
 			case 27:

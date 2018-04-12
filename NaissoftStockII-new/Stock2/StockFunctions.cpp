@@ -169,7 +169,7 @@ void loan(int lmoney)
 
 void interest()
 {
-	loanMoney += (loanMoney * 0.05);
+	loanMoney += (int)((double)loanMoney * 0.05);
 }
 
 void payback()
@@ -182,7 +182,7 @@ void buyStock(int order, int amount)
 {
 	for (int i = 0; i < amount; i++)
 	{
-		if (StockPrice[order] <= Money)
+		if (StockPrice[order] <= (int)Money)
 		{
 			system("cls");
 			gNow = gHead;
