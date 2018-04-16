@@ -1,3 +1,9 @@
+/*
+Header file : GameFunctions.h
+Game 기능 관련 함수 및 디파인 선언.
+Remark : 2018.04.16 정지웅.
+*/
+
 #include "Stock.h"
 #include "StockFunctions.h"
 
