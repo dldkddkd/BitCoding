@@ -12,6 +12,7 @@ int StockPrice[MAX_COMPANY], PrevStockPrice[MAX_COMPANY], Stocks, StockDeal, loa
 int GraphData[MAX_COMPANY][48] = { 0 };
 bool ifGood[MAX_COMPANY];
 
+// Listed Companies
 char *CompanyName[MAX_COMPANY] =
 {
 	"Naissoft",
