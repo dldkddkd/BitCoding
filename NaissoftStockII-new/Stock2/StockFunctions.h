@@ -1,7 +1,7 @@
 #include "Arts.h"
 
 #define DEF_STOCK 9000
-#define DEF_MONEY 50000
+#define DEF_MONEY 500000000
 #define MAX_COMPANY 10
 
 extern int companyOrder[MAX_COMPANY];
