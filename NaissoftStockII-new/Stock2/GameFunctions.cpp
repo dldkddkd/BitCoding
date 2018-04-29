@@ -199,6 +199,7 @@ void showTipNews()
 
 void buyMenu(int order)
 {
+	// HACK:: 구매프로세스 변경 필요. 개수에 따라 반복문을 돌면서 하나씩 구매하고 있음.
 	int amount;
 
 	system("cls");
@@ -394,7 +395,7 @@ void showCompanyInfo()
 
 void DrawGraph(int company)
 {
-
+	// 현재 선택 된 주식 가격 변화 추이
 	gotoxy(0, 25);
 	printf(" 24000                                                                     \n 22000                                                                     \n 20000                                                                     "
 		"\n 18000                                                                     \n 16000                                                                     \n 14000                                                                     "
@@ -439,6 +440,7 @@ void showCompanyReport(int company)
 
 void drawNewspaper(int comp)
 {
+	// 선택된 회사의 뉴스 출력. 회사 상태에 따라 보여지는 뉴스가 다르다.
 	textcolor(112);
 	
 	for (int i = 0; i < 25; i++)

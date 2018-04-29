@@ -29,6 +29,7 @@ char *CompanyName[MAX_COMPANY] =
 
 void ChangeStockPrice()
 {
+	// 회사의 상태에 따라 랜덤값을 이용하여 주식 가격 상하폭 조정.
 	srand((int)time(NULL));
 
 	for (int i = 0; i < MAX_COMPANY; i++)
@@ -175,6 +176,7 @@ void interest()
 
 void payback()
 {
+	// TODO:: 금액이 모자란 경우에도 대출을 갚을수가 있으며, 돈은 -가 되어버림. 수정 필요.
 	Money -= loanMoney;
 	loanMoney = 0;
 }

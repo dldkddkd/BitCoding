@@ -7,6 +7,8 @@
 
 int main(void)
 {
+	// 메인 함수에서 초기 게임 메뉴 선택 및 게임 루프 전체 처리.
+	// TODO:: 메뉴, 게임 루프 기능별 캡슐화 및 클래스화 필요.
 	int menu, cnt, order;
 	char c, pausemenu;
 
@@ -23,6 +25,7 @@ int main(void)
 	init();
 	cnt = month = day = hour = order = 0;
 
+	// 게임 메뉴 선택 루틴
 	switch (menu)
 	{
 	case 1:
@@ -41,6 +44,7 @@ int main(void)
 
 	system("cls");
 	
+	// 게임 루프 시작
 	drawNewspaper(companyOrder[order]);
 	
 	while (true)
@@ -67,6 +71,7 @@ int main(void)
 		c = '\0';
 		getKey(&c);
 
+		// 입력 값에 따른 메뉴 선택 및 처리
 		switch (c)
 		{
 		case 'b':
@@ -128,7 +133,7 @@ int main(void)
 		case 'w':
 			if (timemode == 1)
 			{
-				while (cnt % 20 != 0) cnt++;
+				while (cnt % 20 != 0) cnt++;	// HACK:: 반복문으로 증가 말고 필요한 값 만큼 더해줘서 조건에 만족시키도록 한다.
 				cnt += 20;
 				Sleep(100);
 			}
@@ -148,19 +153,25 @@ int main(void)
 		default:
 			break;
 		}
+
+		// HACK:: 1초에 한번만 처리하도록 수정할 필요 있음.
 		for (int i = 0; i < MAX_COMPANY; i++)
 			PrevStockPrice[i] = StockPrice[i];
 
 		if (cnt % 20 == 0)
 		{
+			// 1초에 한번식 진입.
 			ChangeStockPrice();
 			UpdateGraphData();
 		}
 		
+		// 1초 = 1시간
 		if (cnt % 20 == 0) hour++;
-
+		
+		// 3초에 한번씩 팁 갱신
 		if (cnt % 60 == 0) showTipNews();
 
+		// 매일 1시에 회사에 대한 전문가 의견 변경.
 		if (hour == 1)
 		{
 			for (int i = 0; i < MAX_COMPANY; i++)
@@ -169,12 +180,16 @@ int main(void)
 				else ifGood[i] = false;
 			}
 		}
+
+		// 하루가 지났을 경우 처리
 		if (hour > 23)
 		{
 			hour = 0;
 			interest();
 			day++;
 		}
+
+		// 한 달이 지났을 경우 처리
 		if (day > days[month] - 1)
 		{
 			day = 0;
