@@ -1,3 +1,10 @@
+/*
+* Header file : Stock.h
+* Author : Naissoft
+* Stock 자료구조 이중 연결 리스트
+* Remark : 2018.04.29 조경제.
+*
+*/
 
 struct Stock
 {
@@ -21,4 +28,4 @@ void AppendStock(Stock);
 
 Stock *FindStock(int);
 
-void UnInitStock();
+void DeallocateStock();

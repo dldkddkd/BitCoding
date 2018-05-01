@@ -1,3 +1,10 @@
+/*
+* Header file : StockFunctions.h
+* Stock 기능 함수 선언
+* Remark : 2018.04.29 조경제.
+* 
+*/
+ 
 #include "Arts.h"
 
 #define DEF_STOCK 9000
@@ -13,16 +20,16 @@ void ShowStockPrice(int);
 
 void PrintStockPrice(int);
 
-void loan(int);
+void Loan(int);
 
-void interest();
+void Interest();
 
-void payback();
+void Payback();
 
-void buyStock(int, int);
+void BuyStock(int, int);
 
-void sellStock(int);
+void SellStock(int);
 
-void showStockList();
+void ShowStockList();
 
 void UpdateGraphData();

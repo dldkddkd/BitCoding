@@ -71,9 +71,9 @@ void getKey(char *);
 // TODO:: 주식 구매, 판매, 정보 관련 함수들.
 //		  추후 아래 함수들을 클래스화 하여 관리.
 //		  cCompanyStockManager
-void buyMenu(int);
+void BuyMenu(int);
 
-void sellMenu();
+void SellMenu();
 
 void showCompanyInfo();
 

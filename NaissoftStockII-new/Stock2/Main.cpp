@@ -57,7 +57,7 @@ int main(void)
 		{
 			printf("\n 파산... 3000원 대출해 드리겠습니다.");
 			getchar();
-			loan(3000);
+			Loan(3000);
 			system("cls");
 		}
 		
@@ -76,11 +76,11 @@ int main(void)
 		{
 		case 'b':
 		case 'B':
-			buyMenu(companyOrder[order]);
+			BuyMenu(companyOrder[order]);
 			break;
 		case 'v':
 		case 'V':
-			showStockList();
+			ShowStockList();
 			break;
 		case 27:
 			system("cls");
@@ -98,7 +98,7 @@ int main(void)
 				loanMenu();
 				break;
 			case '3':
-				payback();
+				Payback();
 				break;
 			case '4':
 				settingMenu();
@@ -120,7 +120,7 @@ int main(void)
 			break;
 		case 's':
 		case 'S':
-			sellMenu();
+			SellMenu();
 			break;
 		case 'E':
 		case 'e':
@@ -185,7 +185,7 @@ int main(void)
 		if (hour > 23)
 		{
 			hour = 0;
-			interest();
+			Interest();
 			day++;
 		}
 
@@ -211,6 +211,6 @@ int main(void)
 		}
 	}
 	getchar();
-	UnInitStock();
+	DeallocateStock();
 	return 0;
 }
