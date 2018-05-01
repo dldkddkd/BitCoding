@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="헤더 파일\GameSystem">
+      <UniqueIdentifier>{827cece8-0026-47c8-b9e8-027345c68033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Core">
+      <UniqueIdentifier>{49d95736-d8e6-43c8-93d8-4beab098b957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Core\Design pattern">
+      <UniqueIdentifier>{ad3e7f25-0422-43b5-ab4a-05fb73ba311a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GameSystem\Player">
+      <UniqueIdentifier>{129313ed-2c9a-493e-82e1-0d938d2c34db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GameSystem\Company">
+      <UniqueIdentifier>{82a41252-bfa4-4acb-95ec-fd8fd3ce2df6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arts.cpp">
@@ -33,6 +48,9 @@
     <ClCompile Include="StockFunctions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>헤더 파일\Core\Design pattern</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arts.h">
@@ -44,10 +62,31 @@
     <ClInclude Include="Lib.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Stock.h">
+    <ClInclude Include="StockFunctions.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="StockFunctions.h">
+    <ClInclude Include="global.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSystem.h">
+      <Filter>헤더 파일\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLoop.h">
+      <Filter>헤더 파일\GameSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>헤더 파일\Core\Design pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>헤더 파일\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Company.h">
+      <Filter>헤더 파일\GameSystem\Company</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일\GameSystem\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Stock.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

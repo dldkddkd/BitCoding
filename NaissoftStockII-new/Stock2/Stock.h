@@ -1,11 +1,12 @@
 /*
-* Header file : Stock.h
-* Author : Naissoft
-* Stock 자료구조 이중 연결 리스트
-* Remark : 2018.04.29 조경제.
-*
-*/
-
+ * Stock.h
+ *
+ * Stock 자료구조 이중 연결 리스트
+ *
+ * Created on : 2018-05-01
+ *     Author : Naissoft
+ *	   Remark : 2018.04.29 조경제.
+ */
 struct Stock
 {
 	int price;

@@ -1,9 +1,9 @@
 /*
-* Header file : StockFunctions.h
-* Stock 기능 함수 선언
-* Remark : 2018.04.29 조경제.
-* 
-*/
+ * Header file : StockFunctions.h
+ * Stock 기능 함수 선언
+ * Remark : 2018.04.29 조경제.
+ * 
+ */
  
 #include "Arts.h"
 

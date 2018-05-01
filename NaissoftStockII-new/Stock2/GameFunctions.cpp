@@ -281,7 +281,7 @@ void SellMenu()
 			, selectStock->price, StockPrice[selectStock->company]
 			, profitOnSale);
 
-		key = getch();
+		key = (char)_getch();
 
 		switch (key)
 		{
