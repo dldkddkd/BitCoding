@@ -142,15 +142,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Arts.cpp" />
+    <ClCompile Include="Bank.cpp" />
+    <ClCompile Include="Company.cpp" />
     <ClCompile Include="GameFunctions.cpp" />
     <ClCompile Include="Lib.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="StockFunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arts.h" />
+    <ClInclude Include="Bank.h" />
     <ClInclude Include="Company.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="GameFunctions.h" />

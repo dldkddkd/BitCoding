@@ -18,21 +18,21 @@ namespace GameSystem
 class cCompany
 {
 public:
-	cCompany();
-	virtual ~cCompany();
+	cCompany() {}
+	virtual ~cCompany() {}
 	
 private:
-	bool					mIfGood;
+	bool					mCompStatus;
 	char					mCompanyName[32];
-	int						mPirce;
+	int						mPrice;
 	int						mPrevPrice;
 
 public:
-	void					SetIfGood(bool _ifGood);
+	void					SetCompanyStatus(bool _status);
 	void					SetCompanyName(char* _name);
 	void					SetPrice(int _price);			// 郴何俊辑 Price客 PrevPrice 单捞磐 贸府.
 
-	bool					GetIfGood();
+	bool					GetCompanyStatus();
 	char*					GetCompanyName();
 	int						GetPrice();
 	int						GetPrevPrice();
@@ -41,14 +41,16 @@ public:
 class cCompanyManager : public Core::cSingleton<cCompanyManager>
 {
 public:
-	cCompanyManager();
-	virtual ~cCompanyManager();
+	cCompanyManager() {}
+	virtual ~cCompanyManager() {}
 
 private:
 	cCompany				mCompany[MAX_COMPANY];
 
 public:
 	void					init();
+	
+	void					SetCompanyInfo();
 
 	cCompany				GetCompany(int _num);
 	cCompany				GetCompany(char* _name);

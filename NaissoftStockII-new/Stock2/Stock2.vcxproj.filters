@@ -28,6 +28,9 @@
     <Filter Include="헤더 파일\GameSystem\Company">
       <UniqueIdentifier>{82a41252-bfa4-4acb-95ec-fd8fd3ce2df6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\GameSystem\Bank">
+      <UniqueIdentifier>{be6da35c-05a9-422a-b2fe-ebd9d31e8bba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arts.cpp">
@@ -50,6 +53,15 @@
     </ClCompile>
     <ClCompile Include="Singleton.cpp">
       <Filter>헤더 파일\Core\Design pattern</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>헤더 파일\GameSystem\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Company.cpp">
+      <Filter>헤더 파일\GameSystem\Company</Filter>
+    </ClCompile>
+    <ClCompile Include="Bank.cpp">
+      <Filter>헤더 파일\GameSystem\Bank</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="Stock.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Bank.h">
+      <Filter>헤더 파일\GameSystem\Bank</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
