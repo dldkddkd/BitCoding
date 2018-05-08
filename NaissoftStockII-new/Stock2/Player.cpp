@@ -77,3 +77,8 @@ cStock_info* cPlayer::GetStock_info()
 
 	}
 }
+
+void test()
+{
+	cPlayer::GetInstance();
+}

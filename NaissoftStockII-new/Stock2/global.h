@@ -1,6 +1,7 @@
 /*
  * Header file : global.h
  * 최상위 헤더 파일
+ * Core, GameSystem 사용 하려면 해당 헤더파일 선언 필요.
  * Created by Jeong Ji-ung on 2018-05-01.
  */
 #pragma once

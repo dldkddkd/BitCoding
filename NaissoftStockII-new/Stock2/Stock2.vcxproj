@@ -151,6 +151,7 @@
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="StockFunctions.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arts.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Stock.h" />
     <ClInclude Include="StockFunctions.h" />
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

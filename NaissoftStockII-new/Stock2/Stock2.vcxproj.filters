@@ -31,6 +31,9 @@
     <Filter Include="헤더 파일\GameSystem\Bank">
       <UniqueIdentifier>{be6da35c-05a9-422a-b2fe-ebd9d31e8bba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Core\Timer">
+      <UniqueIdentifier>{edde8c1f-851a-4b37-a511-bae4581785be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Arts.cpp">
@@ -62,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="Bank.cpp">
       <Filter>헤더 파일\GameSystem\Bank</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>헤더 파일\Core\Timer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="Bank.h">
       <Filter>헤더 파일\GameSystem\Bank</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>헤더 파일\Core\Timer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

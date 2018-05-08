@@ -10,7 +10,6 @@
 
 namespace Core
 {
-
 	namespace DeignPattern
 	{
 
@@ -27,5 +26,4 @@ T* cSingleton<T>::GetInstance()
 }
 
 	}
-
 }

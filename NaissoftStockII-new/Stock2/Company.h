@@ -16,19 +16,7 @@ namespace GameSystem
 #define MAX_COMPANY			10
 #define COMPANY_NAME_SIZE	32
 
-char CompanyName[MAX_COMPANY][COMPANY_NAME_SIZE] =
-{
-	"Naissoft",
-	"HawTech",
-	"암겨농업",
-	"MK Electronics",
-	"폭펭군수",
-	"CJ 제일손연재",
-	"KJS 시스템",
-	"Fruit",
-	"수배자 모터스",
-	"기야조선",
-};
+extern char gCompanyName[MAX_COMPANY][COMPANY_NAME_SIZE];
 
 class cCompany
 {

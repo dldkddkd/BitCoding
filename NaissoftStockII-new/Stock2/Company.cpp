@@ -12,6 +12,21 @@ namespace GameSystem
 {
 	namespace Company
 	{
+
+char gCompanyName[MAX_COMPANY][COMPANY_NAME_SIZE] =
+{
+	"Naissoft",
+	"HawTech",
+	"암겨농업",
+	"MK Electronics",
+	"폭펭군수",
+	"CJ 제일손연재",
+	"KJS 시스템",
+	"Fruit",
+	"수배자 모터스",
+	"기야조선",
+};
+
 void cCompany::UpdatePrice()
 {
 	// 회사 상태에 따른 주식 가격 업데이트
@@ -42,12 +57,18 @@ void cCompany::UpdatePrice()
 
 void cCompany::UpdateStatus()
 {
-
+	// 회사 상태 업데이트.
+	// 지입 시기 : 24초에 한번(게임 시간 매일 오전 1시)
+	if (rand() % 2 == 0) 
+		mCompStatus			= true;
+	else 
+		mCompStatus			= false;
 }
 
 void cCompany::Update()
 {
-
+	UpdateStatus();
+	UpdatePrice();
 }
 
 void cCompany::SetCompanyStatus(bool _status)
@@ -90,7 +111,7 @@ void cCompanyManager::Init()
 {
 	for (int i = 0; i < MAX_COMPANY; i++)
 	{
-		mCompany[i].SetCompanyName(CompanyName[i]);
+		mCompany[i].SetCompanyName(gCompanyName[i]);
 		mCompany[i].SetCompanyStatus(true);
 		mCompany[i].SetPrice(9000);
 	}
@@ -98,7 +119,10 @@ void cCompanyManager::Init()
 
 void cCompanyManager::UpdateAllCompany()
 {
-
+	// 모든 회사 상태 업데이트.
+	// 진입 시기 : 1초에 한번
+	for (int i = 0; i < MAX_COMPANY; i++)
+		mCompany[i].Update();
 }
 
 cCompany cCompanyManager::GetCompany(int _num)

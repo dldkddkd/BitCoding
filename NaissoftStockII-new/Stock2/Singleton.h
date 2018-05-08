@@ -10,7 +10,6 @@
 
 namespace Core
 {
-
 	namespace DeignPattern
 	{
 
@@ -33,5 +32,4 @@ public:
 };
 
 	}
-
 }

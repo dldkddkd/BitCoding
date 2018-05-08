@@ -10,6 +10,7 @@
 
 // Header file
 #include "Singleton.h"
+#include "Timer.h"
 
 namespace Core
 {

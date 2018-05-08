@@ -71,7 +71,7 @@ void cBank::Proc_loan()
 	printf("\n 얼마를 대출받으시겠습니까?");
 	scanf("%d", &loan_money);
 	
-	Loan(cPlayer::GetInstance()->GetMoney_info(), loan_money);
+	//Loan(cPlayer::GetInstance()->GetMoney_info(), loan_money);
 }
 
 void cBank::Proc_payback()

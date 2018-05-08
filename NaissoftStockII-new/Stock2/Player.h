@@ -10,9 +10,6 @@
 
 namespace GameSystem
 {
-
-using namespace				Core;
-
 	namespace Player
 	{
 class cMoney_info
@@ -53,7 +50,7 @@ public:
 	int						GetStockDealCount();
 };
 
-class cPlayer : public cSingleton<cPlayer>
+class cPlayer : public Core::cSingleton<cPlayer>
 {
 public:
 	cPlayer() {}
