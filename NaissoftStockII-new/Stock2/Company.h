@@ -10,8 +10,6 @@
 
 namespace GameSystem
 {
-	namespace Company
-	{
 
 #define MAX_COMPANY			10
 #define COMPANY_NAME_SIZE	32
@@ -61,5 +59,4 @@ public:
 	cCompany				GetCompany(int _num);
 };
 
-	}
 }

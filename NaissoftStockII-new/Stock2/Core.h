@@ -15,7 +15,4 @@
 namespace Core
 {
 
-// Using namespace
-using namespace				DeignPattern;
-
 }

@@ -10,10 +10,8 @@
 
 namespace Core
 {
-	namespace DeignPattern
-	{
 
-template <class T>
+template <typename T>
 class cSingleton
 {
 public:
@@ -31,5 +29,7 @@ public:
 	static T*				GetInstance();
 };
 
-	}
 }
+
+// include inline file
+#include "Singleton.inl"

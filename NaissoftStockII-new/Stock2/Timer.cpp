@@ -10,8 +10,6 @@
 
 namespace Core
 {
-	namespace Timer
-	{
 
 void cTimer::Init()
 {
@@ -36,5 +34,4 @@ void cTimer::Update()
 
 }
 
-	}
 }

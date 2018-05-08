@@ -10,8 +10,6 @@
 
 namespace GameSystem
 {
-	namespace Company
-	{
 
 char gCompanyName[MAX_COMPANY][COMPANY_NAME_SIZE] =
 {
@@ -130,5 +128,4 @@ cCompany cCompanyManager::GetCompany(int _num)
 	return mCompany[_num];
 }
 
-	}
 }

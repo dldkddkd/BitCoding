@@ -10,8 +10,6 @@
 
 namespace GameSystem
 {
-	namespace Player
-	{
 
 void cMoney_info::SetMoney(int _money)
 {
@@ -75,10 +73,4 @@ cStock_info* cPlayer::GetStock_info()
 	return &mStock;
 }
 
-	}
-}
-
-void test()
-{
-	cPlayer::GetInstance();
 }

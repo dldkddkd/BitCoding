@@ -54,9 +54,6 @@
     <ClCompile Include="StockFunctions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Singleton.cpp">
-      <Filter>헤더 파일\Core\Design pattern</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>헤더 파일\GameSystem\Player</Filter>
     </ClCompile>
@@ -68,6 +65,9 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>헤더 파일\Core\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.inl">
+      <Filter>헤더 파일\Core\Design pattern</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

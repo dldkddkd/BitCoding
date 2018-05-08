@@ -8,11 +8,12 @@
  */
 #pragma once
 
-// Header file
+ // Header file
 #include "Company.h"
 #include "GameLoop.h"
 #include "Player.h"
 #include "Bank.h"
+
 
 namespace GameSystem
 {
@@ -20,10 +21,5 @@ namespace GameSystem
 // Define
 #define START_MONEY			5000000
 #define DEFAULT_INTER_RATE	1
-
-// Using namespace
-using namespace				Player;
-using namespace				Company;
-using namespace				Bank;
 
 }

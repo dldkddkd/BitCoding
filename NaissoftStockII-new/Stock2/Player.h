@@ -10,8 +10,7 @@
 
 namespace GameSystem
 {
-	namespace Player
-	{
+
 class cMoney_info
 {
 public:
@@ -66,7 +65,5 @@ public:
 	cMoney_info*			GetMoney_info();
 	cStock_info*			GetStock_info();
 };
-
-	}
 
 }

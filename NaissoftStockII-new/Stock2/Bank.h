@@ -11,11 +11,6 @@
 namespace GameSystem
 {
 
-using namespace				Player;
-
-	namespace Bank
-	{
-
 class cBank : public Core::cSingleton<cBank>
 {
 public:
@@ -36,5 +31,4 @@ public:
 	void					Proc_payback();
 };
 
-	}
 }

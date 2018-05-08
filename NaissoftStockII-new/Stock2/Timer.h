@@ -10,13 +10,12 @@
 
 namespace Core
 {
-	namespace Timer
-	{
+
 #define						DELAY	50			// sleep 딜레이 값
 #define						AUTO	0			// 자동
 #define						MANUAL	1			// 수동
 
-class cTimer : public DeignPattern::cSingleton<cTimer>
+class cTimer : public cSingleton<cTimer>
 {
 public:
 	cTimer() {}
@@ -36,5 +35,4 @@ public:
 	void					Update();
 };
 
-	}
 }

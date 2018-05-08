@@ -10,8 +10,6 @@
 
 namespace GameSystem
 {
-	namespace Bank
-	{
 
 void cBank::init()
 {
@@ -71,7 +69,7 @@ void cBank::Proc_loan()
 	printf("\n 얼마를 대출받으시겠습니까?");
 	scanf("%d", &loan_money);
 	
-	//Loan(cPlayer::GetInstance()->GetMoney_info(), loan_money);
+	Loan(cPlayer::GetInstance()->GetMoney_info(), loan_money);
 }
 
 void cBank::Proc_payback()
@@ -79,5 +77,4 @@ void cBank::Proc_payback()
 	//TODO:: 기존 대출 상환처럼 할지, 아니면 새롭게 구현할지 논의 필요.
 }
 
-	}
 }
