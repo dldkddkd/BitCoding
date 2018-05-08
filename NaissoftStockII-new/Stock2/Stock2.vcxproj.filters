@@ -66,9 +66,6 @@
     <ClCompile Include="Timer.cpp">
       <Filter>헤더 파일\Core\Timer</Filter>
     </ClCompile>
-    <ClCompile Include="Singleton.inl">
-      <Filter>헤더 파일\Core\Design pattern</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arts.h">
@@ -112,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>헤더 파일\Core\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.inl">
+      <Filter>헤더 파일\Core\Design pattern</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
