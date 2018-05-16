@@ -245,9 +245,11 @@ void Payback()
 * @param amount
 * Amount of stocks
 *
-* @return void
+* @return bool
+* If the user buys stock, return true
+* If the user can't buy stock, return false
 */
-void BuyStock(int order, int amount)
+bool BuyStock(int order, int amount)
 {
 	Stock temp;
 
@@ -275,8 +277,14 @@ void BuyStock(int order, int amount)
 		else
 		{
 			printf(" 돈이 부족합니다. 주식을 살 수 없습니다.\n");
+			
+			/* 만약 살 때 처음 부터 사지 못하면 false 반환 */
+			if (i == 0)
+				return false;
+
 		}
 	}
+	return true;
 }
 
 /** Sell a stock and delete it on list
