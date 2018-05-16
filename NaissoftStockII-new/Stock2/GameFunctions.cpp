@@ -216,12 +216,14 @@ void BuyMenu(int order)
 		, CompanyName[order], StockPrice[order]);
 
 	scanf("%d", &amountOfStocks);
+
 	if (amountOfStocks > 0)
 	{
 		BuyStock(order, amountOfStocks);
 		printf("\n\n 구입하였습니다.");
-		Sleep(2000);
+		Sleep(3000);
 	}
+
 	system("cls");
 	return;
 }
