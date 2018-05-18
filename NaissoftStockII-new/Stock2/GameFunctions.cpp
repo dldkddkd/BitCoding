@@ -343,7 +343,7 @@ void showStats()
 	titleLine("통  계");
 	printf("\n 주식을 사거나 판 횟수 : %d\n 현재 가진 돈 : %d원\n 주식 개수 : %d\n\n 돌아가려면 Enter를 누르세요.\n", StockDeal, Money, Stocks);
 	/* key가 ENTER일 때까지 반복 */
-	while (key != 13) {
+	while (key != ENTER) {
 		key = _getch();
 	}
 	system("cls");
