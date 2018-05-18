@@ -7,6 +7,10 @@
  * TODO:: 해당 헤더파일 내에 있는 모든 함수들 클래스화 필요.
  *	      지나치게 많은 전역변수 제거 및 헝가리안 표기법에 의한 이름 변경 필요.
  *	      옵저버 패턴 적용하여 하나의 객체로 게임 루프 관리 예정.
+ *
+ * issue#6 통계 기능 오류 수정 
+ * showStats 함수에 getchar()를 제거하고 ENTER키를 입력할 때까지 반복하도록 변경
+ * 2018-05-18 조경제
  */
 
 #include "Stock.h"
@@ -19,6 +23,7 @@
 #include <Windows.h>
 
 #define DELAY 50
+#define ENTER 13
 
 #define MAX_TIP 4
 #define MAX_NEWS 5

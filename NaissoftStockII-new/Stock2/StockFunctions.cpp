@@ -276,7 +276,7 @@ bool BuyStock(int order, int amount)
 		}
 		else
 		{
-			printf(" 돈이 부족합니다. 주식을 살 수 없습니다.\n");
+			printf("\n 돈이 부족합니다. 주식을 살 수 없습니다.\n");
 			
 			/* 만약 살 때 처음 부터 사지 못하면 false 반환 */
 			if (i == 0)
