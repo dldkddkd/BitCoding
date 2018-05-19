@@ -16,6 +16,10 @@
 #include "Core.h"
 #include "GameSystem.h"
 
+// Naissoft Header file
+#include "Arts.h"
+#include "Lib.h"
+
 // Using namesapce
 using namespace				Core;
 using namespace				GameSystem;

@@ -3,6 +3,8 @@
  * 기타 추가적인 시스템 기능
  * Remark : 2018.04.21 정지웅.
  */
+#pragma once
+
 #define DEFAULT_COLOR 7 
 
 typedef enum {

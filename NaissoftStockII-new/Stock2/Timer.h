@@ -33,6 +33,12 @@ private:
 public:
 	void					Init();
 	void					Update();
+
+	int						GetHour();
+	int						GetDay();
+	int						GetMonth();
+	int						GetTimerMode();
+	int						GetDaysOfCurrent();
 };
 
 }

@@ -11,6 +11,10 @@
 namespace GameSystem
 {
 
+#define MAX_TIP				4
+#define MAX_NEWS			5
+#define MAX_HEADLINE		5
+#define MAX_ARTICLE			3
 #define MAX_COMPANY			10
 #define COMPANY_NAME_SIZE	32
 
@@ -41,6 +45,9 @@ public:
 	char*					GetCompanyName();
 	int						GetPrice();
 	int						GetPrevPrice();
+
+	void					DrawNewspaper();
+	void					PrintStockPrice();
 };
 
 class cCompanyManager : public Core::cSingleton<cCompanyManager>
@@ -54,9 +61,13 @@ private:
 
 public:
 	void					Init();
-	void					UpdateAllCompany();
+	void					UpdateAllCompanyStatus();
+	void					UpdateAllCompanyPrice();
 
 	cCompany				GetCompany(int _num);
+
+	void					DrawNewspaper(int _selectComp);
+	void					ShowStockPrice(int _viewMode);
 };
 
 }

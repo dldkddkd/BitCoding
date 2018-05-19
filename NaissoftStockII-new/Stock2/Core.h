@@ -11,6 +11,7 @@
 // Header file
 #include "Singleton.h"
 #include "Timer.h"
+#include "Data.h"
 
 namespace Core
 {

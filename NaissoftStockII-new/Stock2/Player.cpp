@@ -11,6 +11,16 @@
 namespace GameSystem
 {
 
+void cMoney_info::Interest()
+{
+	loan					+= (int)((double)loan * interest);
+}
+
+void cMoney_info::Tax()
+{
+	ready_money				-= TAX(ready_money);
+}
+
 void cMoney_info::SetMoney(int _money)
 {
 	ready_money				= _money;
@@ -24,9 +34,9 @@ void cMoney_info::SetLoan(int _loan)
 		loan				= 0;
 }
 
-void cMoney_info::SetInterRate(int _rate)
+void cMoney_info::SetInterest(double _rate)
 {
-	inter_rate				= _rate;
+	interest				= _rate;
 }
 
 int cMoney_info::GetMoney()
@@ -39,9 +49,9 @@ int cMoney_info::GetLoan()
 	return loan;
 }
 
-int cMoney_info::GetInterRate()
+double cMoney_info::GetInterRate()
 {
-	return inter_rate;
+	return interest;
 }
 
 void cStock_info::SetStockDealCount(int _count)
@@ -54,11 +64,11 @@ int cStock_info::GetStockDealCount()
 	return stock_deal_count;
 }
 
-void cPlayer::init()
+void cPlayer::Init()
 {
 	mMoney.SetMoney(START_MONEY);
 	mMoney.SetLoan(0);
-	mMoney.SetInterRate(DEFAULT_INTER_RATE);
+	mMoney.SetInterest(DEFAULT_INTER_RATE);
 
 	mStock.SetStockDealCount(0);
 }

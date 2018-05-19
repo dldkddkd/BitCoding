@@ -27,11 +27,88 @@ void cTimer::Init()
 	mDays[11]				= 31;
 
 	mTimerMode				= AUTO;
+
+	mMonth					= 0;
+	mDay					= 0;
+	mHour					= 0;
+	mCnt					= 0;
 }
 
 void cTimer::Update()
 {
+	// 특정 시간에 따른 데이터 처리 수행
 
+	// 1초 == 1시간
+	if (mCnt % 20 == 0)
+	{
+		cCompanyManager::GetInstance()->UpdateAllCompanyPrice();
+		//TOOD:: UpdateGraphData();
+		mHour++;
+	}
+
+	// 3초에 한번씩 팁 갱신
+	if (mCnt % 60 == 0)
+	{
+		//TOOD:: showTipNews();
+	}
+
+	if (mHour == 1)
+		cCompanyManager::GetInstance()->UpdateAllCompanyStatus();
+
+	// 하루가 지났을 경우 처리
+	if (mHour > 23)
+	{
+		mHour				= 0;
+		mDay++;
+		cPlayer::GetInstance()->GetMoney_info()->Interest();
+	}
+
+	if (mDay > mDays[mMonth] - 1)
+	{
+		mDay				= 0;
+		mMonth++; 
+		cPlayer::GetInstance()->GetMoney_info()->Tax();
+	}
+
+	if (mMonth > 11)
+		mMonth				= 0;
+
+	if (mTimerMode == AUTO)
+	{
+		//TODO:: clearbuffer();
+		Sleep(DELAY);
+		mCnt++;
+	}
+	else if (mTimerMode == MANUAL)
+	{
+		//TODO:: clearbuffer();
+		Sleep(DELAY);
+	}
+}
+
+int cTimer::GetHour()
+{
+	return mHour;
+}
+
+int cTimer::GetDay()
+{
+	return mDay;
+}
+
+int cTimer::GetMonth()
+{
+	return mMonth;
+}
+
+int cTimer::GetTimerMode()
+{
+	return mTimerMode;
+}
+
+int cTimer::GetDaysOfCurrent()
+{
+	return mDays[mDay];
 }
 
 }

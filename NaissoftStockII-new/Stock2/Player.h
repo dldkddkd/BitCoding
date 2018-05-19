@@ -20,16 +20,19 @@ public:
 private:
 	int						ready_money;		// 소지금 (소지금 + 대출금)
 	int						loan;				// 대출금
-	int						inter_rate;			// 대출이자
+	double					interest;			// 대출이자
 
 public:
+	void					Interest();
+	void					Tax();
+
 	void					SetMoney(int _money);
 	void					SetLoan(int _loan);
-	void					SetInterRate(int _rate);
+	void					SetInterest(double _rate);
 
 	int						GetMoney();
 	int						GetLoan();
-	int						GetInterRate();
+	double					GetInterRate();
 };
 
 class cStock_info
@@ -60,7 +63,7 @@ private:
 	cStock_info				mStock;
 
 public:
-	void					init();
+	void					Init();
 
 	cMoney_info*			GetMoney_info();
 	cStock_info*			GetStock_info();

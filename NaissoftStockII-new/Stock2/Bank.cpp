@@ -11,7 +11,7 @@
 namespace GameSystem
 {
 
-void cBank::init()
+void cBank::Init()
 {
 	mInter_rate				= DEFAULT_INTER_RATE;
 }
@@ -25,7 +25,7 @@ bool cBank::Loan(cMoney_info* _money_info, int _loan)
 	}
 	
 	_money_info->SetLoan(_money_info->GetLoan() + _loan);
-	_money_info->SetInterRate(mInter_rate);
+	_money_info->SetInterest(mInter_rate);
 	_money_info->SetMoney(_money_info->GetMoney() + _money_info->GetLoan());
 	
 	return true;

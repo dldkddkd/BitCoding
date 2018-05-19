@@ -18,14 +18,14 @@ public:
 	virtual ~cBank() {}
 
 private:
-	int						mInter_rate;
+	double					mInter_rate;
 
 private:
 	bool					Loan(cMoney_info* _money_info, int _loan);
 	bool					Payback(cMoney_info* _money_info, int _payback);
 
 public:
-	void					init();
+	void					Init();
 
 	void					Proc_loan();
 	void					Proc_payback();
