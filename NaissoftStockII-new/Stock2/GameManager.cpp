@@ -90,12 +90,12 @@ void cGameManager::SelectGameMenu()
 	{
 	case 'b':
 	case 'B':
-		
+		BuyMenu();
 		break;
 
 	case 'v':
 	case 'V':
-		
+		ShowStockList();
 		break;
 
 	case 27:
@@ -111,6 +111,7 @@ void cGameManager::SelectGameMenu()
 
 	case 's':
 	case 'S':
+		SellMenu();
 		break;
 
 	case 'E':
@@ -235,4 +236,207 @@ void cGameManager::onStart()
 	}
 }
 
+void cGameManager::BuyMenu()
+{
+	// HACK:: 구매프로세스 변경 필요. 개수에 따라 반복문을 돌면서 하나씩 구매하고 있음.
+	int amountOfStocks;
+
+	bool deal;
+
+	system("cls");
+	titleLine("주식 사기");
+
+	printf(" 현재 %s 회사의 주가는 %d원입니다.\n\n 몇 개를 구입하시겠습니까? (취소 : 0)"
+		, cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetCompanyName(), cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetPrice());
+
+	scanf("%d", &amountOfStocks);
+
+	if (amountOfStocks > 0)
+	{
+		deal = mPlayerMarket.BuyStock(mSelectComp, amountOfStocks);
+
+		if(deal)
+			printf("\n\n 구입하였습니다.");
+		else
+			printf("\n\n 구입하지 못했습니다");
+
+		Sleep(2000);
+	
+	}
+
+	system("cls");
+	return;
+}
+
+void cGameManager::SellMenu()
+{
+	int idx;
+	int numberOfStocks;
+	int listPage;
+	int profitOnSale;
+	int amount;
+
+	char key;
+
+	cNode *selectStock;
+
+	key = '\0';
+	listPage = idx = 1;
+	system("cls");
+
+	/* 유저는 A, D, W, S, B, Q 키를 입력합니다					*/
+	/* 주식은 한 페이지 당 10개 씩 출력합니다						*/
+	/* A키를 입력하면 이전 페이지를 출력합니다						*/
+	/* D키를 입력하면 다음 페이지를 출력합니다						*/
+	/* W키를 입력하면 현재 선택한 주식 위의 주식을 선택합니다		*/
+	/* S키를 입력하면 현재 선택한 주식 아래의 주식을 선택합니다		*/
+	/* B키를 입력하면 선택한 주식 판매합니다						*/
+	/* Q키를 입력하면 이 반복문을 중지합니다						*/
+	while (true)
+	{
+		titleLine("주식 팔기");
+		printf("\n [ W / S로 팔 주식을 고르세요. A / D로 더 볼 수 있습니다. B를 누르면 팝니다. ]\n\n");
+
+		numberOfStocks = 1;
+
+		/* 주식 연결리스트를 순회하면서 가지고 있는 회사 주식 가격을 출력합니다 */
+		for (cNode *pNow = cPlayer::GetInstance()->GetStock_info()->GetStock().GetHead()->GetNextNode(); pNow != NULL; pNow = pNow->GetNextNode())
+		{
+			/* 주식을 한 페이지 당 10개씩 출력합니다. */
+			/* Format: (idx) 회사 : (회사이름), 가격 : (주식가격)원 */
+			if (numberOfStocks >= listPage && numberOfStocks < listPage + 10)
+				printf("\n %d. 회사 : %-20s, 가격 : %d원, 개수 : %d개",
+					numberOfStocks, 
+					cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber()).GetCompanyName(),
+					pNow->GetPrice(), 
+					pNow->GetAmount());
+
+			numberOfStocks++;
+		}
+
+		printf("\n 돌아가려면 Q를 누르세요.\n");
+
+		selectStock = cPlayer::GetInstance()->GetStock_info()->GetStock().SearchNode(idx - 1);
+
+		if (selectStock == NULL) {
+			system("cls");
+			return;
+		}
+
+		profitOnSale = cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetPrice()
+			- selectStock->GetPrice();
+
+		printf("\n [ 선택 주식 정보 ]\n\n 번호 : %d\n 회사 : %s\n 가격 : %d\n 현재 가격 : %d\n 매도 이익 : %d",
+			idx,
+			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetCompanyName(),
+			selectStock->GetPrice(),
+			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetPrice(),
+			profitOnSale);
+
+		key = (char)_getch();
+
+		switch (key)
+		{
+		case 'A':
+		case 'a':
+			if (listPage > 10)
+				listPage -= 10;
+			break;
+
+		case 'D':
+		case 'd':
+			listPage += 10;
+			break;
+
+		case 'W':
+		case 'w':
+			if (idx > 1)
+				idx--;
+			break;
+
+		case 'S':
+		case 's':
+			if (idx < numberOfStocks)
+				idx++;
+			break;
+
+		case 'Q':
+		case 'q':
+			system("cls");
+			return;
+
+		case 'B':
+		case 'b':
+			printf("\n 매도할 주식 개수 : ");
+			scanf("%d", &amount);
+
+			if (0 < amount && amount <= selectStock->GetAmount())
+			{
+				mPlayerMarket.SellStock(idx, amount);
+			}
+			break;
+		}
+
+		key = '\0';
+		system("cls");
+	}
+}
+
+void cGameManager::ShowStockList()
+{
+	int numberOfStocks;
+	int listPage; /* 한 페이지 당 10개의 주식을 출력합니다. */
+	char key = '\0';
+
+	system("cls");
+
+	listPage = 1;
+	if (cPlayer::GetInstance()->GetStock_info()->GetStockNumber() <= 0)
+	{
+		printf("\n 주식이 없습니다.\n");
+		Sleep(600);
+	}
+	else
+	{
+		/* 유저는 A, D, Q 키를 입력합니다				*/
+		/* 주식은 한 페이지 당 10개 씩 출력합니다		*/
+		/* A키를 입력하면 이전 페이지를 출력합니다		*/
+		/* D키를 입력하면 다음 페이지를 출력합니다		*/
+		/* Q키를 입력하면 이 반복문을 중지합니다		*/
+		while (key != 'Q' || key != 'q')
+		{
+			system("cls");
+			titleLine("주식 목록 보기");
+
+			printf("\n [ A, D로 더 보실 수 있습니다. ]\n\n");
+
+			numberOfStocks = 1;
+			/* 주식 연결리스트를 순회하면서 가지고 있는 회사 주식 가격을 출력합니다 */
+			for (cNode *pNow = cPlayer::GetInstance()->GetStock_info()->GetStock().GetHead()->GetNextNode(); pNow != NULL; pNow = pNow->GetNextNode())
+			{
+				if (numberOfStocks >= listPage && numberOfStocks < listPage + 10) /* 주식을 한 페이지 당 10개씩 출력합니다. */
+					printf("\n %d. 회사 : %-20s, 가격 : %d원, 개수 : %d개",
+						numberOfStocks,
+						cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber()).GetCompanyName(),
+						pNow->GetPrice(),
+						pNow->GetAmount());
+
+				numberOfStocks++;
+			}
+			printf("\n 돌아가려면 Q를 누르세요.\n");
+
+			key = (char)_getch();
+			if (key == 'D' || key == 'd')
+			{
+				listPage += 10;
+			}
+			else if (key == 'A' || key == 'a')
+			{
+				if (listPage > 10)
+					listPage -= 10;
+			}
+		}
+	}
+	system("cls");
+}
 }

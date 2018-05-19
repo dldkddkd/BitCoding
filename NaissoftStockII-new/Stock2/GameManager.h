@@ -14,7 +14,10 @@ namespace GameSystem
 class cDrawGame
 {
 public:
-	cDrawGame() {}
+	cDrawGame() 
+	{
+		mStockViewMode = 0;
+	}
 	virtual ~cDrawGame() {}
 
 private:
@@ -43,6 +46,8 @@ private:
 
 	cDrawGame				mDrawGame;
 
+	cMarket					mPlayerMarket;
+
 private:
 	void					InitGame();
 
@@ -51,6 +56,11 @@ private:
 	void					SelectPauseMenu();
 
 	void					GetKey(char* c);
+
+	void					BuyMenu();
+	void					SellMenu();
+
+	void					ShowStockList();
 
 public:
 	void					onStart();

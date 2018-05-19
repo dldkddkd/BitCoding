@@ -12,6 +12,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <Windows.h>
+#include <list>
 
 #include "Core.h"
 #include "GameSystem.h"
@@ -23,3 +24,4 @@
 // Using namesapce
 using namespace				Core;
 using namespace				GameSystem;
+using namespace				std;

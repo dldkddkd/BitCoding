@@ -45,17 +45,14 @@
     <Filter Include="Naissoft\Lib">
       <UniqueIdentifier>{4128fa34-d1b8-43e5-94c4-d23f0874ea96}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StockGame\GameSystem\Market">
+      <UniqueIdentifier>{844d41db-8d83-441d-bdeb-50d9e12df319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\Stock">
+      <UniqueIdentifier>{d5b8bb24-18f8-4062-9651-12e06a017a68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameFunctions.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Stock.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="StockFunctions.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>StockGame\GameSystem\Player</Filter>
     </ClCompile>
@@ -82,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>StockGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Stock.cpp">
+      <Filter>StockGame\GameSystem\Stock</Filter>
+    </ClCompile>
+    <ClCompile Include="Market.cpp">
+      <Filter>StockGame\GameSystem\Market</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,14 +127,11 @@
     <ClInclude Include="global.h">
       <Filter>StockGame</Filter>
     </ClInclude>
-    <ClInclude Include="StockFunctions.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Stock.h">
-      <Filter>소스 파일</Filter>
+      <Filter>StockGame\GameSystem\Stock</Filter>
     </ClInclude>
-    <ClInclude Include="GameFunctions.h">
-      <Filter>소스 파일</Filter>
+    <ClInclude Include="Market.h">
+      <Filter>StockGame\GameSystem\Market</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

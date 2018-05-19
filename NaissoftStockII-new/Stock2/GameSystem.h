@@ -10,10 +10,11 @@
 
  // Header file
 #include "Company.h"
+#include "Market.h"
 #include "GameManager.h"
+#include "Stock.h"
 #include "Player.h"
 #include "Bank.h"
-
 
 namespace GameSystem
 {
