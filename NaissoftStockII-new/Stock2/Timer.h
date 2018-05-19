@@ -33,6 +33,7 @@ private:
 public:
 	void					Init();
 	void					Update();
+	void					ManualUpdate();
 
 	int						GetHour();
 	int						GetDay();

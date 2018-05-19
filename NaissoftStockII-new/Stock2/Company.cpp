@@ -86,27 +86,27 @@ char *gBadHeadline[MAX_HEADLINE] =
 char *gGoodArticle[MAX_ARTICLE] =
 {
 	"이(가) 유례 없는 성장을\n\
-	계속하고 있다. 어제 본지와의 인터뷰에 \n\
-	서 김갑동 준승대 경영학과 명예교수는 \"\n\
-	아직 단정짓기는 어려우나 현재 성장세를\n\
-	계속 유지할 것\"이라고 답변했다. 김 교 \n\
-	수는 환율과 경기 회복 등의 여러 요인이\n\
-	현재의 성장에 작용했다고 주장하고 있다",
+계속하고 있다. 어제 본지와의 인터뷰에 \n\
+서 김갑동 준승대 경영학과 명예교수는 \"\n\
+아직 단정짓기는 어려우나 현재 성장세를\n\
+계속 유지할 것\"이라고 답변했다. 김 교 \n\
+수는 환율과 경기 회복 등의 여러 요인이\n\
+현재의 성장에 작용했다고 주장하고 있다",
 
 	"의 신제품이 큰 인기를\n\
-	끌고 있다. 얼마 전 출시한 이 제품은 회\n\
-	사 경영진들의 반대를 무릅쓰고 출시한  \n\
-	품이다. 개발 초반부터 잡음이 많았으나 \n\
-	현재는 자타공인 회사의 대표 모델로 자 \n\
-	리매김하는 중이다.",
+끌고 있다. 얼마 전 출시한 이 제품은 회\n\
+사 경영진들의 반대를 무릅쓰고 출시한  \n\
+품이다. 개발 초반부터 잡음이 많았으나 \n\
+현재는 자타공인 회사의 대표 모델로 자 \n\
+리매김하는 중이다.",
 
 	"이(가)\n더욱 성장할 전망이다.\n\
-	美 소비자단체 NSC의 조사 결과 다른 회 \n\
-	사들을 모두 제치고 만족도 지수 1위를  \n\
-	달성하였으며, 이에 따라 판매량도 꾸준 \n\
-	히 늘어나고 있다. 이런 추세라면 곧 국 \n\
-	내 시장도 장악할 수 있을 것으로 전망된\n\
-	다.",
+美 소비자단체 NSC의 조사 결과 다른 회 \n\
+사들을 모두 제치고 만족도 지수 1위를  \n\
+달성하였으며, 이에 따라 판매량도 꾸준 \n\
+히 늘어나고 있다. 이런 추세라면 곧 국 \n\
+내 시장도 장악할 수 있을 것으로 전망된\n\
+다.",
 };
 
 void cCompany::UpdatePrice()
@@ -303,6 +303,19 @@ void cCompanyManager::UpdateAllCompanyPrice()
 		mCompany[i].UpdatePrice();
 }
 
+void cCompanyManager::UpdateGraphData()
+{
+	for (int i = 0; i < MAX_COMPANY; i++)
+	{
+		for (int j = 46; j >= 0; j--)
+		{
+			mGraphData[i][j + 1]	= mGraphData[i][j];
+		}
+		
+		mGraphData[i][0]	= mCompany[i].GetPrice();
+	}
+}
+
 cCompany cCompanyManager::GetCompany(int _num)
 {
 	return mCompany[_num];
@@ -395,6 +408,62 @@ void cCompanyManager::ShowStockPrice(int _viewMode)
 			}
 		}
 	}
+}
+
+void cCompanyManager::DrawGraph(int _comp)
+{
+	// 현재 선택 된 주식 가격 변화 추이
+	gotoxy(0, 25);
+	printf(" 24000                                                                     \n 22000                                                                     \n 20000                                                                     "
+		"\n 18000                                                                     \n 16000                                                                     \n 14000                                                                     "
+		"\n 12000                                                                     \n 10000                                                                     \n  8000                                                                     "
+		"\n  6000                                                                     \n  4000                                                                     \n  2000                                                                     \n                                                                              ");
+	gotoxy(7, 46);
+
+	int j = 0;
+	for (int i = 47; i >= 0; i--)
+	{
+		if (mGraphData[_comp][i] > 0 && mGraphData[_comp][i] < 26000)
+		{
+			gotoxy(7 + j, 36 - ((int)((mGraphData[_comp][i] % 26000) / 2000) - 1));
+			
+			if (mGraphData[_comp][i] < 2000) 
+				printf("v");
+			else 
+				printf("*");
+			
+			j++;
+		}
+		else if (mGraphData[_comp][i] >= 26000)
+		{
+			gotoxy(7 + j, 36 - ((int)(((mGraphData[_comp][i] - 2000) % 24000) / 2000)));
+			
+			if ((mGraphData[_comp][i] - 2000) / 24000 + 1 > 9)
+				printf("+");
+			else 
+				printf("%d", (mGraphData[_comp][i] - 2000) / 24000 + 1);
+			
+			j++;
+		}
+	}
+}
+
+void cCompanyManager::ShowCompanyReport(int _comp)
+{
+	for (int i = 2; i < 7; i++)
+	{
+		gotoxy(75, i);
+		printf("                     ");
+	}
+
+	gotoxy(75, 2);
+	printf("회사 : %s", mCompany[_comp].GetCompanyName());
+	
+	gotoxy(75, 4);
+	printf("현재 주가 : %d원", mCompany[_comp].GetPrice());
+	
+	gotoxy(75, 6);
+	printf("전문가 의견 : %s", mCompany[_comp].GetCompanyStatus() ? "긍정적" : "부정적");
 }
 
 }

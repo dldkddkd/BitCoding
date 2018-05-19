@@ -63,9 +63,7 @@ void cBank::Proc_loan()
 
 	system("cls");
 	
-	//TODO:: 추후 타이틀라인 관련 제어 클래스 추가 되면 이 부분 수정 필요.
-	//titleLine("대  출");
-	
+	titleLine("대  출");
 	printf("\n 얼마를 대출받으시겠습니까?");
 	scanf("%d", &loan_money);
 	

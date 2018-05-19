@@ -57,17 +57,21 @@ public:
 	virtual ~cCompanyManager() {}
 
 private:
+	int						mGraphData[MAX_COMPANY][48];
 	cCompany				mCompany[MAX_COMPANY];
 
 public:
 	void					Init();
 	void					UpdateAllCompanyStatus();
 	void					UpdateAllCompanyPrice();
+	void					UpdateGraphData();
 
 	cCompany				GetCompany(int _num);
 
 	void					DrawNewspaper(int _selectComp);
 	void					ShowStockPrice(int _viewMode);
+	void					DrawGraph(int _comp);
+	void					ShowCompanyReport(int _comp);
 };
 
 }

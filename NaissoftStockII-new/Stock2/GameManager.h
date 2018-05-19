@@ -30,11 +30,15 @@ public:
 class cGameManager : public Core::cSingleton<cGameManager>
 {
 public:
-	cGameManager() {}
+	cGameManager() 
+	{
+		mSelect				= '\0';
+		mSelectComp			= 0;
+	}
 	virtual ~cGameManager() {}
 
 private:
-	int						mSelect;
+	char					mSelect;
 	int						mSelectComp;
 
 	cDrawGame				mDrawGame;
@@ -45,6 +49,8 @@ private:
 	void					SelectStartMenu();
 	void					SelectGameMenu();
 	void					SelectPauseMenu();
+
+	void					GetKey(char* c);
 
 public:
 	void					onStart();

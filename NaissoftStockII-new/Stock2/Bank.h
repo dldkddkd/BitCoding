@@ -20,12 +20,11 @@ public:
 private:
 	double					mInter_rate;
 
-private:
-	bool					Loan(cMoney_info* _money_info, int _loan);
-	bool					Payback(cMoney_info* _money_info, int _payback);
-
 public:
 	void					Init();
+
+	bool					Loan(cMoney_info* _money_info, int _loan);
+	bool					Payback(cMoney_info* _money_info, int _payback);
 
 	void					Proc_loan();
 	void					Proc_payback();

@@ -42,7 +42,7 @@ void cTimer::Update()
 	if (mCnt % 20 == 0)
 	{
 		cCompanyManager::GetInstance()->UpdateAllCompanyPrice();
-		//TOOD:: UpdateGraphData();
+		cCompanyManager::GetInstance()->UpdateGraphData();
 		mHour++;
 	}
 
@@ -75,15 +75,22 @@ void cTimer::Update()
 
 	if (mTimerMode == AUTO)
 	{
-		//TODO:: clearbuffer();
+		clearbuffer();
 		Sleep(DELAY);
 		mCnt++;
 	}
 	else if (mTimerMode == MANUAL)
 	{
-		//TODO:: clearbuffer();
+		clearbuffer();
 		Sleep(DELAY);
 	}
+}
+
+void cTimer::ManualUpdate()
+{
+	while (mCnt % 20 != 0)
+		mCnt++;
+	Sleep(100);
 }
 
 int cTimer::GetHour()
