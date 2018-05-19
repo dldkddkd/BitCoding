@@ -3,6 +3,8 @@
  * Stock 기능 함수 선언
  * Remark : 2018.04.29 조경제.
  * 
+ * issue#12 BuyStock 함수의 반환값 변경 void -> bool
+ * Modify : 2018.05.16 조경제
  */
  
 #include "Arts.h"
@@ -26,7 +28,7 @@ void Interest();
 
 void Payback();
 
-void BuyStock(int, int);
+bool BuyStock(int, int);
 
 void SellStock(int);
 
