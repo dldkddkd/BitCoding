@@ -115,7 +115,7 @@ int cTimer::GetTimerMode()
 
 int cTimer::GetDaysOfCurrent()
 {
-	return mDays[mDay];
+	return mDays[mMonth];
 }
 
 }
