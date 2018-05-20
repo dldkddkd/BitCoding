@@ -370,7 +370,9 @@ void cGameManager::SellMenu()
 		case 'b':
 			printf("\n\n 매도할 주식 개수(숫자를 입력하세요) : ");
 			scanf("%d", &amount);
-			//while (getchar() != '\n');
+
+			while (getchar() != '\n');
+
 			if (0 < amount && amount <= selectStock->GetAmount())
 			{
 				mPlayerMarket.SellStock(idx, amount);

@@ -52,7 +52,12 @@ void cPlayerMarket::SellStock(int indexStock, int amount)
 
 	cPlayer::GetInstance()->GetMoney_info()->SetMoney(
 		cPlayer::GetInstance()->GetMoney_info()->GetMoney() 
-		+ (cCompanyManager::GetInstance()->GetCompany(saleStock->GetCompanyNumber()).GetPrice() *amount));
+		+ (cCompanyManager::GetInstance()->GetCompany(saleStock->GetCompanyNumber()).GetPrice() * amount)
+	);
+
+	cPlayer::GetInstance()->GetStock_info()->SetStockNumber(
+		cPlayer::GetInstance()->GetStock_info()->GetStockNumber() - amount
+	);
 
 	if (saleStock->GetAmount() > amount)
 		saleStock->SetAmount(saleStock->GetAmount() - amount);
