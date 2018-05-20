@@ -255,8 +255,9 @@ void cGameManager::BuyMenu()
 	{
 		deal = mPlayerMarket.BuyStock(mSelectComp, amountOfStocks);
 
-		if(deal)
+		if (deal)
 			printf("\n\n 구입하였습니다.");
+		
 		else
 			printf("\n\n 구입하지 못했습니다");
 
@@ -279,7 +280,7 @@ void cGameManager::SellMenu()
 	char key;
 
 	cNode *selectStock;
-
+	cNode *pNow;
 	key = '\0';
 	listPage = idx = 1;
 	system("cls");
@@ -300,7 +301,7 @@ void cGameManager::SellMenu()
 		numberOfStocks = 1;
 
 		/* 주식 연결리스트를 순회하면서 가지고 있는 회사 주식 가격을 출력합니다 */
-		for (cNode *pNow = cPlayer::GetInstance()->GetStock_info()->GetStock().GetHead()->GetNextNode(); pNow != NULL; pNow = pNow->GetNextNode())
+		for (pNow = cPlayer::GetInstance()->GetStock_info()->GetStock().GetHead()->GetNextNode(); pNow != NULL; pNow = pNow->GetNextNode())
 		{
 			/* 주식을 한 페이지 당 10개씩 출력합니다. */
 			/* Format: (idx) 회사 : (회사이름), 가격 : (주식가격)원 */
@@ -367,9 +368,9 @@ void cGameManager::SellMenu()
 
 		case 'B':
 		case 'b':
-			printf("\n 매도할 주식 개수 : ");
+			printf("\n\n 매도할 주식 개수(숫자를 입력하세요) : ");
 			scanf("%d", &amount);
-
+			//while (getchar() != '\n');
 			if (0 < amount && amount <= selectStock->GetAmount())
 			{
 				mPlayerMarket.SellStock(idx, amount);
@@ -403,7 +404,7 @@ void cGameManager::ShowStockList()
 		/* A키를 입력하면 이전 페이지를 출력합니다		*/
 		/* D키를 입력하면 다음 페이지를 출력합니다		*/
 		/* Q키를 입력하면 이 반복문을 중지합니다		*/
-		while (key != 'Q' || key != 'q')
+		while (key != 'Q' && key != 'q')
 		{
 			system("cls");
 			titleLine("주식 목록 보기");

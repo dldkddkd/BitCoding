@@ -3,7 +3,7 @@
 namespace GameSystem
 {
 
-bool cMarket::BuyStock(int order, int amount) 
+bool cPlayerMarket::BuyStock(int order, int amount) 
 {
 	int totalPrice;
 
@@ -12,7 +12,7 @@ bool cMarket::BuyStock(int order, int amount)
 
 	totalPrice = cCompanyManager::GetInstance()->GetCompany(order).GetPrice() * amount;
 
-	if (cCompanyManager::GetInstance()->GetCompany(order).GetPrice() <= cPlayer::GetInstance()->GetMoney_info()->GetMoney())
+	if (totalPrice <= cPlayer::GetInstance()->GetMoney_info()->GetMoney())
 	{
 		system("cls");
 			
@@ -25,7 +25,7 @@ bool cMarket::BuyStock(int order, int amount)
 		cPlayer::GetInstance()->GetStock_info()->GetStock().InsertNode(pNow, &temp);
 
 		cPlayer::GetInstance()->GetStock_info()->SetStockDealCount(cPlayer::GetInstance()->GetStock_info()->GetStockDealCount() + 1);
-		cPlayer::GetInstance()->GetMoney_info()->SetMoney(cPlayer::GetInstance()->GetMoney_info()->GetMoney() - cCompanyManager::GetInstance()->GetCompany(order).GetPrice());
+		cPlayer::GetInstance()->GetMoney_info()->SetMoney(cPlayer::GetInstance()->GetMoney_info()->GetMoney() - totalPrice);
 		cPlayer::GetInstance()->GetStock_info()->SetStockNumber(cPlayer::GetInstance()->GetStock_info()->GetStockNumber() + amount);
 
 		printf(" %d원을 주고 주식을 구입했습니다. 주식이 %d개입니다.\n",
@@ -43,7 +43,7 @@ bool cMarket::BuyStock(int order, int amount)
 	}
 }
 
-void cMarket::SellStock(int indexStock, int amount)
+void cPlayerMarket::SellStock(int indexStock, int amount)
 {
 	cNode *saleStock = cPlayer::GetInstance()->GetStock_info()->GetStock().SearchNode(indexStock - 1);
 
