@@ -238,7 +238,6 @@ void cGameManager::onStart()
 
 void cGameManager::BuyMenu()
 {
-	// HACK:: 구매프로세스 변경 필요. 개수에 따라 반복문을 돌면서 하나씩 구매하고 있음.
 	int amountOfStocks;
 
 	bool deal;
@@ -250,6 +249,8 @@ void cGameManager::BuyMenu()
 		, cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetCompanyName(), cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetPrice());
 
 	scanf("%d", &amountOfStocks);
+
+	while (getchar() != '\n');
 
 	if (amountOfStocks > 0)
 	{
@@ -284,6 +285,15 @@ void cGameManager::SellMenu()
 	key = '\0';
 	listPage = idx = 1;
 	system("cls");
+
+	if (cPlayer::GetInstance()->GetStock_info()->GetStockNumber() <= 0)
+	{
+		printf("\n 주식이 없습니다.\n");
+		Sleep(600);
+
+		system("cls");
+		return;
+	}
 
 	/* 유저는 A, D, W, S, B, Q 키를 입력합니다					*/
 	/* 주식은 한 페이지 당 10개 씩 출력합니다						*/
@@ -376,7 +386,13 @@ void cGameManager::SellMenu()
 			if (0 < amount && amount <= selectStock->GetAmount())
 			{
 				mPlayerMarket.SellStock(idx, amount);
+				printf("\n\n 주식을 팔았습니다.");
 			}
+			else
+			{
+				printf("\n\n 무효한 값을 입력했습니다.(가지고 계신 주식 개수 이하로 입력하십시오)");
+			}
+			Sleep(1000);
 			break;
 		}
 
