@@ -255,8 +255,9 @@ void cGameManager::BuyMenu()
 	{
 		deal = mPlayerMarket.BuyStock(mSelectComp, amountOfStocks);
 
-		if(deal)
+		if (deal)
 			printf("\n\n 구입하였습니다.");
+		
 		else
 			printf("\n\n 구입하지 못했습니다");
 
@@ -367,9 +368,9 @@ void cGameManager::SellMenu()
 
 		case 'B':
 		case 'b':
-			printf("\n 매도할 주식 개수 : ");
+			printf("\n\n 매도할 주식 개수(숫자를 입력하세요) : ");
 			scanf("%d", &amount);
-
+			//while (getchar() != '\n');
 			if (0 < amount && amount <= selectStock->GetAmount())
 			{
 				mPlayerMarket.SellStock(idx, amount);

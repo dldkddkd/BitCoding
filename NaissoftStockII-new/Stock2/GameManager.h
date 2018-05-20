@@ -46,8 +46,8 @@ private:
 
 	cDrawGame				mDrawGame;
 
-	cMarket					mPlayerMarket;
-
+	cPlayerMarket					mPlayerMarket;
+	
 private:
 	void					InitGame();
 

@@ -3,7 +3,7 @@
 namespace GameSystem
 {
 
-bool cMarket::BuyStock(int order, int amount) 
+bool cPlayerMarket::BuyStock(int order, int amount) 
 {
 	int totalPrice;
 
@@ -43,7 +43,7 @@ bool cMarket::BuyStock(int order, int amount)
 	}
 }
 
-void cMarket::SellStock(int indexStock, int amount)
+void cPlayerMarket::SellStock(int indexStock, int amount)
 {
 	cNode *saleStock = cPlayer::GetInstance()->GetStock_info()->GetStock().SearchNode(indexStock - 1);
 

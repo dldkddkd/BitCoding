@@ -76,7 +76,7 @@ int cStock_info::GetStockNumber()
 
 cStock cStock_info::GetStock()
 {
-	return mPlayerStock;
+	return mStock;
 }
 
 void cPlayer::Init()
