@@ -78,7 +78,7 @@ cNode* cStock::InsertNode(cNode *pTarget, cNode *insertStock)
 	pTarget->SetNextNode(pNewNode);
 
 	if (pRight != NULL)
-		pRight->SetNextNode(pNewNode);
+		pRight->SetPrevNode(pNewNode);
 
 	return pNewNode;
 }
