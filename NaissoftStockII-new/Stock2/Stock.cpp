@@ -71,15 +71,14 @@ cNode* cStock::InsertNode(cNode *pTarget, cNode *insertStock)
 	cNode *pRight = pTarget->GetNextNode();
 
 	*pNewNode = *insertStock;
-
 	
 	pNewNode->SetNextNode(pRight);
 	pNewNode->SetPrevNode(pTarget);
 
 	pTarget->SetNextNode(pNewNode);
 
-	if (pRight)
-		pRight->SetNextNode(pNewNode);
+	if (pRight != NULL)
+		pRight->SetPrevNode(pNewNode);
 
 	return pNewNode;
 }
