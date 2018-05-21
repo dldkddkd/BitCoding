@@ -12,9 +12,6 @@
     <Filter Include="StockGame\GameSystem">
       <UniqueIdentifier>{827cece8-0026-47c8-b9e8-027345c68033}</UniqueIdentifier>
     </Filter>
-    <Filter Include="StockGame\GameSystem\Player">
-      <UniqueIdentifier>{129313ed-2c9a-493e-82e1-0d938d2c34db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="StockGame\GameSystem\Company">
       <UniqueIdentifier>{82a41252-bfa4-4acb-95ec-fd8fd3ce2df6}</UniqueIdentifier>
     </Filter>
@@ -51,10 +48,13 @@
     <Filter Include="StockGame\GameSystem\Stock">
       <UniqueIdentifier>{d5b8bb24-18f8-4062-9651-12e06a017a68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StockGame\Player">
+      <UniqueIdentifier>{129313ed-2c9a-493e-82e1-0d938d2c34db}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
-      <Filter>StockGame\GameSystem\Player</Filter>
+      <Filter>StockGame\Player</Filter>
     </ClCompile>
     <ClCompile Include="Company.cpp">
       <Filter>StockGame\GameSystem\Company</Filter>
@@ -107,7 +107,7 @@
       <Filter>StockGame\GameSystem\Company</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>StockGame\GameSystem\Player</Filter>
+      <Filter>StockGame\Player</Filter>
     </ClInclude>
     <ClInclude Include="Bank.h">
       <Filter>StockGame\GameSystem\Bank</Filter>
