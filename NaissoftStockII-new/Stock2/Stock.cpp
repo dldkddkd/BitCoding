@@ -5,6 +5,8 @@
 
 Stock *gHead, *gNow, gTmp;
 
+Stock comStock[10];
+
 /** Initialize stock node
 *
 * @return void
@@ -15,7 +17,19 @@ void InitStock()
 	gHead->next = NULL;
 	gHead->prev = NULL;
 }
+/** Initialize Computer stock node
+*
+* @return void
+*/
+void InitComputerStock() {
+	int i;
+	
+	for (i = 0; i < 10; i++) {
+		comStock[i].company = 0;
+		comStock[i].price = 0;
+	}
 
+}
 /** Insert stock next target node
 *
 * @param *pTarget

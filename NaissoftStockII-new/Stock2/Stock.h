@@ -18,7 +18,11 @@ struct Stock
 
 extern Stock *gHead, *gNow, gTmp;
 
+extern Stock comStock[10];
+
 void InitStock();
+
+void InitComputerStock();
 
 Stock *InsertStock(Stock *Target, Stock *aStock);
 

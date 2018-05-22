@@ -38,7 +38,7 @@ extern bool ifGood[MAX_COMPANY];
 extern char *CompanyName[MAX_COMPANY];
 extern Stock *gHead, *gHow, gTmp;
 
-extern int viewmode, timemode;
+extern int viewmode, timemode, computer_money;
 
 // 2018-04-21 정지웅.
 // TODO:: 아래 함수들은 플레이어 관련 함수이므로 따로 클래스로 만들어 관리할 예정.
@@ -73,7 +73,11 @@ void getKey(char *);
 //		  cCompanyStockManager
 void BuyMenu(int);
 
+void ComputerBuyStock();
+
 void SellMenu();
+
+void ComputerSellStock();
 
 void showCompanyInfo();
 

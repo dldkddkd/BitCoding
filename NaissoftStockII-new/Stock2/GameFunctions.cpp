@@ -1,6 +1,6 @@
 #include "GameFunctions.h"
 
-int month, day, hour, achour;
+int month, day, hour, achour, computer_money;
 
 int viewmode, timemode;
 
@@ -93,6 +93,7 @@ int days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 void init()
 {
 	Money = DEF_MONEY;
+	computer_money = COM_MONEY;
 	for (int i = 0; i < MAX_COMPANY; i++) StockPrice[i] = 9000;
 	for (int i = 0; i < MAX_COMPANY; i++) ifGood[i] = true;
 	Stocks = StockDeal = 0;
@@ -108,7 +109,7 @@ void ShowMain()
 	printf(" Stock II - Naissoft 주식 게임 2\n ver α 1.3.0128\n\n B 사기, S 팔기, V 목록, E 저장, I 회사 정보, 8 / 2 회사 선택, Esc 메뉴");
 	if (timemode == 1) printf("\n W 기다리기");
 	gotoxy(0, 5);
-	printf("\n 현재 내 돈 : %d원, 갚아야 할 돈 : %d원\n\n\n\n", Money, loanMoney);
+	printf("\n 현재 내 돈 : %d원, 갚아야 할 돈 : %d원, 상대 보유 자금 : %d원\n\n\n\n", Money, loanMoney, computer_money);
 
 	ShowStockPrice(viewmode);
 
@@ -226,6 +227,38 @@ void BuyMenu(int order)
 	return;
 }
 
+/** Computer buys stocks
+*
+* This function added by 이지수(2018-05-22)
+*
+* @return void
+*/
+void ComputerBuyStock()
+{
+	int i, j = -1, max = 0;
+
+	//전날 대비 최대 가격 상승한 주식 찾기
+	for (i = 0; i < MAX_COMPANY; i++) {
+		if (StockPrice[i] - PrevStockPrice[i] > max) {
+			max = StockPrice[i] - PrevStockPrice[i];
+			j = i;
+		}
+	}
+
+	//돈이 없으면 컴퓨터는 자동으로 구매 취소
+	if ((StockPrice[j] > computer_money)||(j < 0))
+		return;
+
+	//여기서 comStock[j].company변수는 컴퓨터가 그 회사의 주식을 산 개수를 의미함
+	comStock[j].company = computer_money / StockPrice[j];
+	
+	//컴퓨터가 산 주식의 당시 가격을 저장
+	comStock[j].price = StockPrice[j];
+	
+	//구매한 비용만큼 컴퓨터가 가진 비용 차감
+	computer_money -= StockPrice[j] * comStock[j].company;
+	return;
+}
 /** Move a stock sell menu to sell stocks
 *
 * @return void
@@ -322,6 +355,30 @@ void SellMenu()
 		key = '\0';
 		system("cls");
 	}
+}
+
+/** Computer sells stocks
+*
+* This function added by 이지수(2018-05-22)
+*
+* @return void
+*/
+void ComputerSellStock()
+{
+	int i;
+
+	//컴퓨터가 산 주식 중에 이득을 조금이라도 봤거나
+	//10%이상 손해가 나면 바로 판매
+	//그 이외의 조건은 그대로 진행
+	for (i = 0; i < 10; i++) {
+
+		if ((comStock[i].price < StockPrice[i])||(comStock[i].price * 9 /10 >= StockPrice[i])) {
+			computer_money += StockPrice[i] * comStock[i].company;
+			comStock[i].company = 0;
+			comStock[i].price = 0;
+		}
+	}
+	return;
 }
 
 void showStats()

@@ -153,6 +153,11 @@ int main(void)
 		default:
 			break;
 		}
+		//컴퓨터가 주식을 구매함
+		ComputerBuyStock();
+		
+		//컴퓨터가 주식을 판매함
+		ComputerSellStock();
 
 		// HACK:: 1초에 한번만 처리하도록 수정할 필요 있음.
 		for (int i = 0; i < MAX_COMPANY; i++)
