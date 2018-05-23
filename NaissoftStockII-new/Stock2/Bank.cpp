@@ -73,6 +73,19 @@ void cBank::Proc_loan()
 void cBank::Proc_payback()
 {
 	//TODO:: 기존 대출 상환처럼 할지, 아니면 새롭게 구현할지 논의 필요.
+
+	int						payback_money;
+
+	system("cls");
+
+	titleLine("상  환");
+	printf("\n 얼마를 상환 하시겠습니까?");
+	scanf("%d", &payback_money);
+
+	while (getchar() != '\n');
+
+	Payback(cPlayer::GetInstance()->GetMoney_info(), payback_money);
+
 }
 
 }
