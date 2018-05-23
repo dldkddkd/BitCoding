@@ -168,6 +168,7 @@ void cGameManager::SelectPauseMenu()
 		break;
 
 	case '3':
+		cBank::GetInstance()->Proc_payback();
 		break;
 
 	case '4':

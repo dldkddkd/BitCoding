@@ -51,9 +51,11 @@ bool cBank::Payback(cMoney_info* _money_info, int _payback)
 		_payback			= _money_info->GetLoan();
 	}
 
-	_money_info->SetLoan(_money_info->GetLoan() - _payback);
-	_money_info->SetMoney(_money_info->GetMoney() - _payback);
-
+	if (_payback >= 0) 
+	{
+		_money_info->SetLoan(_money_info->GetLoan() - _payback);
+		_money_info->SetMoney(_money_info->GetMoney() - _payback);
+	}
 	return true;
 }
 
@@ -79,7 +81,10 @@ void cBank::Proc_payback()
 	system("cls");
 
 	titleLine("상  환");
-	printf("\n 얼마를 상환 하시겠습니까?");
+	printf("\n 갚아야 할 금액이 %d원 남았습니다",
+		cPlayer::GetInstance()->GetMoney_info()->GetLoan());
+	printf("\n 얼마를 상환 하시겠습니까?(취소 : 0) ");
+
 	scanf("%d", &payback_money);
 
 	while (getchar() != '\n');
