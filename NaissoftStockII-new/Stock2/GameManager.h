@@ -46,7 +46,7 @@ private:
 
 	cDrawGame				mDrawGame;
 
-	cPlayerMarket					mPlayerMarket;
+	cPlayerMarket			mPlayerMarket;
 	
 private:
 	void					InitGame();
@@ -61,6 +61,8 @@ private:
 	void					SellMenu();
 
 	void					ShowStockList();
+
+	void					ShowStatistics();
 
 public:
 	void					onStart();
