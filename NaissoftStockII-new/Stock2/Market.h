@@ -1,3 +1,12 @@
+/*
+* Market.h
+*
+* 주식 매매 관리 클래스
+*
+* Created on : 2018-05-25
+*     Author : 조경제
+*/
+
 #pragma once
 
 namespace GameSystem 
