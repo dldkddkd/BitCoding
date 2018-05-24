@@ -300,7 +300,7 @@ void cGameManager::SellMenu()
 
 	system("cls");
 
-	if (cPlayer::GetInstance()->GetStock_info()->GetStockNumber() <= 0)
+	if (cPlayer::GetInstance()->GetStock_info()->GetStockAmount() <= 0)
 	{
 		printf("\n 주식이 없습니다.\n");
 
@@ -436,7 +436,7 @@ void cGameManager::ShowStockList()
 
 	player_stock				= cPlayer::GetInstance()->GetStock_info()->GetStock();
 
-	if (cPlayer::GetInstance()->GetStock_info()->GetStockNumber() <= 0)
+	if (cPlayer::GetInstance()->GetStock_info()->GetStockAmount() <= 0)
 	{
 		printf("\n 주식이 없습니다.\n");
 		Sleep(600);
@@ -500,7 +500,7 @@ void cGameManager::ShowStatistics()
 	printf("\n 주식을 사거나 판 횟수 : %d\n 현재 가진 돈 : %d원\n 주식 개수 : %d\n\n 돌아가려면 Enter를 누르세요.\n", 
 		cPlayer::GetInstance()->GetStock_info()->GetStockDealCount(),
 		cPlayer::GetInstance()->GetMoney_info()->GetMoney(),
-		cPlayer::GetInstance()->GetStock_info()->GetStockNumber());
+		cPlayer::GetInstance()->GetStock_info()->GetStockAmount());
 	
 	/* 엔터를 입력하면 종료 */
 	while (key != ENTER)
