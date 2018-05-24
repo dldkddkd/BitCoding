@@ -425,6 +425,7 @@ void cGameManager::ShowStockList()
 {
 	int stock_number;
 	int page;
+
 	char key;
 
 	cStock player_stock;

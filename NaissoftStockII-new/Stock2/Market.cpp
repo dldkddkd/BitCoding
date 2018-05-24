@@ -3,6 +3,19 @@
 namespace GameSystem
 {
 
+/** Buy stocks and insert into the stock linked list to save user's stocks
+* 주식을 사고 유저의 주식들을 저장하기 위해 주식 연결리스트에 저장합니다
+*
+* @param order
+* Company number to identify companies
+*
+* @param amount
+* Amount of stocks
+*
+* @return bool
+* If the user buys stock, return true
+* If the user can't buy stock, return false
+*/
 bool cPlayerMarket::BuyStock(int order, int amount) 
 {
 	int totalPrice;
@@ -43,6 +56,16 @@ bool cPlayerMarket::BuyStock(int order, int amount)
 	}
 }
 
+/** Sell a stock and delete it on list
+*
+* @param indexStock
+* index of the list of stocks the user wants to sell
+*
+* @param amount
+* amount of a stock that user selects
+*
+* @return void
+*/
 void cPlayerMarket::SellStock(int indexStock, int amount)
 {
 	cNode *saleStock = cPlayer::GetInstance()->GetStock_info()->GetStock().SearchNode(indexStock - 1);
