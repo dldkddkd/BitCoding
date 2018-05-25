@@ -10,7 +10,6 @@
 
 namespace GameSystem
 {
-
 class cDrawGame
 {
 public:

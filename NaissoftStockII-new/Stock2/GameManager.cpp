@@ -10,7 +10,8 @@
 
 namespace GameSystem
 {
-
+	int computer_money;
+	
 void cDrawGame::ShowMain()
 {
 	gotoxy(0, 1);
@@ -18,9 +19,10 @@ void cDrawGame::ShowMain()
 
 	if (cTimer::GetInstance()->GetTimerMode() == 1)
 		printf("\n W 기다리기");
-
 	gotoxy(0, 5);
-	printf("\n 현재 내 돈 : %d원, 갚아야 할 돈 : %d원\n\n\n\n", cPlayer::GetInstance()->GetMoney_info()->GetMoney(), cPlayer::GetInstance()->GetMoney_info()->GetLoan());
+	printf("\n                                                                                      ");
+	gotoxy(0, 5);
+	printf("\n 현재 내 돈 : %d원, 갚아야 할 돈 : %d원, 상대 보유 자금 : %d원\n\n\n\n", cPlayer::GetInstance()->GetMoney_info()->GetMoney(), cPlayer::GetInstance()->GetMoney_info()->GetLoan(),computer_money);
 
 	cCompanyManager::GetInstance()->ShowStockPrice(mStockViewMode);
 
@@ -49,7 +51,7 @@ void cGameManager::InitGame()
 	cCompanyManager::GetInstance()->Init();
 	cBank::GetInstance()->Init();
 	cTimer::GetInstance()->Init();
-
+	
 	//TODO:: Stock List init
 }
 
@@ -206,6 +208,9 @@ void cGameManager::GetKey(char* c)
 
 void cGameManager::onStart()
 {
+	boolean mode = true;
+
+	computer_money = 5000000;
 	InitGame();
 	SelectStartMenu();
 
@@ -234,7 +239,13 @@ void cGameManager::onStart()
 		printf("◀");
 
 		SelectGameMenu();
-
+		if (!mode)
+			cCompanyManager::GetInstance()->ComputerSellStock(&computer_money);
+		if(mode)  
+			cCompanyManager::GetInstance()->ComputerBuyStock(&computer_money);
+		mode = !mode;
+		
+		
 		cTimer::GetInstance()->Update();
 	}
 }
