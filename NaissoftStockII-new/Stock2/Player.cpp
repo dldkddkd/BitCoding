@@ -79,7 +79,7 @@ cStock cStock_info::GetStock()
 	return mStock;
 }
 
-void cPlayer::Init()
+void cPlayData::Init()
 {
 	mMoney.SetMoney(START_MONEY);
 	mMoney.SetLoan(0);
@@ -89,12 +89,12 @@ void cPlayer::Init()
 	mStock.SetStockAmount(0);
 }
 
-cMoney_info* cPlayer::GetMoney_info()
+cMoney_info* cPlayData::GetMoney_info()
 {
 	return &mMoney;
 }
 
-cStock_info* cPlayer::GetStock_info()
+cStock_info* cPlayData::GetStock_info()
 {
 	return &mStock;
 }

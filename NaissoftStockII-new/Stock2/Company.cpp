@@ -118,16 +118,16 @@ void cCompany::UpdatePrice()
 	if (mCompStatus == true)
 	{
 		if ((rand() % 2) == 0)
-			mPrice			+= (rand() % 1000);
+			mPrice			+= (rand() % MAX_UP_PRICE);
 		else
-			mPrice			-= (rand() % 100);
+			mPrice			-= (rand() % LOW_DOWN_PRICE);
 	}
 	else
 	{
 		if ((rand() % 2) == 0)
-			mPrice			+= (rand() % 500);
+			mPrice			+= (rand() % LOW_UP_PRICE);
 		else
-			mPrice			-= (rand() % 1000);
+			mPrice			-= (rand() % MAX_DOWN_PRICE);
 	}
 
 	// 각 회사의 주식 가격은 2000 이하로 떨어지지 않는다.
@@ -316,14 +316,14 @@ void cCompanyManager::UpdateGraphData()
 	}
 }
 
-cCompany cCompanyManager::GetCompany(int _num)
+cCompany* cCompanyManager::GetCompany(int _num)
 {
-	return mCompany[_num];
+	return &mCompany[_num];
 }
 
 void cCompanyManager::DrawNewspaper(int _selectComp)
 {
-	GetCompany(_selectComp).DrawNewspaper();
+	GetCompany(_selectComp)->DrawNewspaper();
 }
 
 /** Draw stock price on console
@@ -464,6 +464,42 @@ void cCompanyManager::ShowCompanyReport(int _comp)
 	
 	gotoxy(75, 6);
 	printf("전문가 의견 : %s", mCompany[_comp].GetCompanyStatus() ? "긍정적" : "부정적");
+}
+
+void cCompanyManager::ShowCompanyInfo()
+{
+	int						i = 0;
+	char					ch = '\0';
+
+	system("cls");
+
+	while (ch != 27)
+	{
+		system("cls");
+		titleLine("회사 정보");
+
+		gotoxy(0, 5);
+		printf(" %d / %d. W, S 키로 넘겨 볼 수 있습니다. Esc로 나가기\n 회사 : %s\n\n", i + 1, MAX_COMPANY, mCompany[i].GetCompanyName());
+		printf("%s", gInfos[i]);
+
+		ch					= (char)_getch();
+
+		switch (ch)
+		{
+		case 'W':
+		case 'w':
+			if (i < MAX_COMPANY - 1) 
+				i++;
+			break;
+
+		case 'S':
+		case 's':
+			if (i > 0)
+				i--;
+			break;
+		}
+	}
+	system("cls");
 }
 
 }

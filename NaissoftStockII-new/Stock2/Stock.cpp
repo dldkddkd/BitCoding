@@ -103,6 +103,7 @@ bool cStock::DeleteNode(cNode *deleteStock)
 
 	return true;
 }
+
 cNode* cStock::SearchNode(int index)
 {
 	int ind = 0;

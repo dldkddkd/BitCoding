@@ -20,7 +20,8 @@ void cDrawGame::ShowMain()
 		printf("\n W 기다리기");
 
 	gotoxy(0, 5);
-	printf("\n 현재 내 돈 : %d원, 갚아야 할 돈 : %d원\n\n\n\n", cPlayer::GetInstance()->GetMoney_info()->GetMoney(), cPlayer::GetInstance()->GetMoney_info()->GetLoan());
+	printf("\n 현재 내 돈 : %d원, 갚아야 할 돈 : %d원\n", cPlayer::GetInstance()->GetMoney_info()->GetMoney(), cPlayer::GetInstance()->GetMoney_info()->GetLoan());
+	printf(" 컴퓨터 돈 : %d원\n\n\n", cAIPlayer::GetInstance()->GetMoney_info()->GetMoney());
 
 	cCompanyManager::GetInstance()->ShowStockPrice(mStockViewMode);
 
@@ -51,11 +52,10 @@ void cGameManager::InitGame()
 	startLogo();
 
 	cPlayer::GetInstance()->Init();
+	cAIPlayer::GetInstance()->Init();
 	cCompanyManager::GetInstance()->Init();
 	cBank::GetInstance()->Init();
 	cTimer::GetInstance()->Init();
-
-	//TODO:: Stock List init
 }
 
 void cGameManager::SelectStartMenu()
@@ -137,6 +137,7 @@ void cGameManager::SelectGameMenu()
 
 	case 'I':
 	case 'i':
+		cCompanyManager::GetInstance()->ShowCompanyInfo();
 		break;
 
 	case '2':
@@ -177,6 +178,7 @@ void cGameManager::SelectPauseMenu()
 		break;
 
 	case '4':
+		SelectSettingMenu();
 		break;
 
 	case '5':
@@ -186,10 +188,63 @@ void cGameManager::SelectPauseMenu()
 		char				ch;
 		ch					= (char)_getch();
 
-		if (ch == 'Y' || ch == 'y') 
-		{
+		if (ch == 'Y' || ch == 'y')
 			exit(0);
-			return;
+		break;
+
+	case 27:
+		break;
+
+	default:
+		break;
+	}
+}
+
+void cGameManager::SelectSettingMenu()
+{
+	char					select;
+	system("cls");
+	titleLine("설  정");
+	printf(" 1. 보기 모드 전환\n 2. 시간 흐름 방식 전환\n Esc 돌아가기");
+
+	select					= (char)_getch();
+
+	switch (select)
+	{
+	case '1':
+		mDrawGame.SetStockViewMode(mDrawGame.GetStockViewMode() + 1);
+		
+		if (mDrawGame.GetStockViewMode() > 2)
+			mDrawGame.SetStockViewMode(0);
+
+		switch (mDrawGame.GetStockViewMode())
+		{
+		case 0:
+			printf(" 보기 방식이 기본 모드로 전환되었습니다.");
+			break;
+		case 1:
+			printf(" 보기 방식이 내림차순 모드로 전환되었습니다.");
+			break;
+		case 2:
+			printf(" 보기 방식이 오름차순 모드로 전환되었습니다.");
+			break;
+		}
+		break;
+
+	case '2':
+		cTimer::GetInstance()->SetTimerMode(cTimer::GetInstance()->GetTimerMode() + 1);
+
+		if (cTimer::GetInstance()->GetTimerMode() > 1) 
+			cTimer::GetInstance()->SetTimerMode(0);
+
+		switch (cTimer::GetInstance()->GetTimerMode())
+		{
+		case 0:
+			printf(" 시간 흐름이 자동으로 전환되었습니다.");
+			break;
+		case 1:
+			printf(" 시간 흐름이 수동으로 전환되었습니다.");
+			break;
 		}
 		break;
 
@@ -199,6 +254,9 @@ void cGameManager::SelectPauseMenu()
 	default:
 		break;
 	}
+	Sleep(300);
+	system("cls");
+	return;
 }
 
 void cGameManager::GetKey(char* c)
@@ -257,8 +315,8 @@ void cGameManager::BuyMenu()
 	titleLine("주식 사기");
 
 	printf(" 현재 %s 회사의 주가는 %d원입니다.\n\n 몇 개를 구입하시겠습니까? (취소 : 0)",
-		cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetCompanyName(), 
-		cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetPrice());
+		cCompanyManager::GetInstance()->GetCompany(mSelectComp)->GetCompanyName(), 
+		cCompanyManager::GetInstance()->GetCompany(mSelectComp)->GetPrice());
 
 	scanf("%d", &stock_amount);
 
@@ -341,7 +399,7 @@ void cGameManager::SellMenu()
 			if (stock_number >= page && stock_number < page + 10)
 				printf("\n %d. 회사 : %-20s, 가격 : %d원, 개수 : %d개",
 					stock_number,
-					cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber()).GetCompanyName(),
+					cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber())->GetCompanyName(),
 					pNow->GetPrice(), 
 					pNow->GetAmount());
 
@@ -355,15 +413,15 @@ void cGameManager::SellMenu()
 			return;
 		}
 
-		sale_profit			= cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetPrice() - selectStock->GetPrice();
+		sale_profit			= cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber())->GetPrice() - selectStock->GetPrice();
 
 		printf("\n 돌아가려면 Q를 누르세요.\n");
 
 		printf("\n [ 선택 주식 정보 ]\n\n 번호 : %d\n 회사 : %s\n 가격 : %d\n 현재 가격 : %d\n 매도 이익 : %d",
 			idx,
-			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetCompanyName(),
+			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber())->GetCompanyName(),
 			selectStock->GetPrice(),
-			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetPrice(),
+			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber())->GetPrice(),
 			sale_profit);
 
 		key					= (char)_getch();
@@ -473,7 +531,7 @@ void cGameManager::ShowStockList()
 				if (stock_number >= page && stock_number < page + 10) /* 주식을 한 페이지 당 10개씩 출력합니다. */
 					printf("\n %d. 회사 : %-20s, 가격 : %d원, 개수 : %d개",
 						stock_number,
-						cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber()).GetCompanyName(),
+						cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber())->GetCompanyName(),
 						pNow->GetPrice(),
 						pNow->GetAmount());
 
@@ -519,4 +577,5 @@ void cGameManager::ShowStatistics()
 
 	system("cls");
 }
+
 }

@@ -40,6 +40,11 @@ public:
 	int						GetMonth();
 	int						GetTimerMode();
 	int						GetDaysOfCurrent();
+
+	void					SetHour(int hour);
+	void					SetDay(int day);
+	void					SetMonth(int month);
+	void					SetTimerMode(int timerMode);
 };
 
 }

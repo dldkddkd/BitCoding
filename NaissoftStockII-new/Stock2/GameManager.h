@@ -16,7 +16,7 @@ class cDrawGame
 public:
 	cDrawGame() 
 	{
-		mStockViewMode = 0;
+		mStockViewMode		= 0;
 	}
 	virtual ~cDrawGame() {}
 
@@ -45,7 +45,6 @@ private:
 	int						mSelectComp;
 
 	cDrawGame				mDrawGame;
-
 	cPlayerMarket			mPlayerMarket;
 	
 private:
@@ -54,6 +53,7 @@ private:
 	void					SelectStartMenu();
 	void					SelectGameMenu();
 	void					SelectPauseMenu();
+	void					SelectSettingMenu();
 
 	void					GetKey(char* c);
 
@@ -68,6 +68,7 @@ public:
 	cDrawGame				GetDrawGame();
 
 	void					onStart();
+
 };
 
 }
