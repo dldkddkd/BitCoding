@@ -95,11 +95,6 @@ void cTimer::ManualUpdate()
 	Sleep(100);
 }
 
-void cTimer::SetTimerMode(int _mode)
-{
-	mTimerMode				= _mode;
-}
-
 int cTimer::GetHour()
 {
 	return mHour;
@@ -125,4 +120,23 @@ int cTimer::GetDaysOfCurrent()
 	return mDays[mMonth];
 }
 
+void cTimer::SetHour(int hour)
+{
+	mHour = hour;
+}
+
+void cTimer::SetDay(int day)
+{
+	mDay = day;
+}
+
+void cTimer::SetMonth(int month)
+{
+	mMonth = month;
+}
+
+void cTimer::SetTimerMode(int timerMode)
+{
+	mTimerMode = timerMode;
+}
 }

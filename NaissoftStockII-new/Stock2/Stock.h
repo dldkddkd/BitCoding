@@ -45,13 +45,16 @@ class cStock
 public:
 	cStock() 
 	{
-		mHead = new cNode;
+		mHead					= new cNode;
+
 		mHead->SetNextNode(NULL);
 		mHead->SetPrevNode(NULL);
 	}
 	virtual ~cStock() {}
 
 private:
+	int							mCount;
+
 	cNode*						mHead;
 
 public:

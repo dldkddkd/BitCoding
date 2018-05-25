@@ -39,6 +39,11 @@ int cDrawGame::GetStockViewMode()
 	return mStockViewMode;
 }
 
+cDrawGame cGameManager::GetDrawGame()
+{
+	return mDrawGame;
+}
+
 void cGameManager::InitGame()
 {
 	system("title Stock 2 - 주식 게임 2");
@@ -117,7 +122,7 @@ void cGameManager::SelectGameMenu()
 	case 'E':
 	case 'e':
 		system("cls");
-		//save();
+		cData::GetInstance()->Save();
 		printf("\n 게임이 저장되었습니다.");
 		Sleep(300);
 		break;
@@ -184,7 +189,7 @@ void cGameManager::SelectPauseMenu()
 		ch					= (char)_getch();
 
 		if (ch == 'Y' || ch == 'y')
-			return;
+			exit(0);
 		break;
 
 	case 27:

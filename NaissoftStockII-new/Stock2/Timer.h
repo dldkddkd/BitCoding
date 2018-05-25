@@ -35,13 +35,16 @@ public:
 	void					Update();
 	void					ManualUpdate();
 
-	void					SetTimerMode(int _mode);
-
 	int						GetHour();
 	int						GetDay();
 	int						GetMonth();
 	int						GetTimerMode();
 	int						GetDaysOfCurrent();
+
+	void					SetHour(int hour);
+	void					SetDay(int day);
+	void					SetMonth(int month);
+	void					SetTimerMode(int timerMode);
 };
 
 }

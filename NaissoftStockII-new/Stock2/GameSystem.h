@@ -9,9 +9,9 @@
 #pragma once
 
  // Header file
-#include "Company.h"
 #include "Market.h"
 #include "GameManager.h"
+#include "Company.h"
 #include "Stock.h"
 #include "Player.h"
 #include "Bank.h"
