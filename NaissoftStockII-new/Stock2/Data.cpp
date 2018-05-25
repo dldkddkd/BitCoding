@@ -50,10 +50,10 @@ void cData::Save()
 	}
 
 	for (int i = 0; i < MAX_COMPANY; i++) 
-		fprintf(save, "%d ", _rotl(cCompanyManager::GetInstance()->GetCompany(i).GetPrice(), 1));
+		fprintf(save, "%d ", _rotl(cCompanyManager::GetInstance()->GetCompany(i)->GetPrice(), 1));
 
 	for (int i = 0; i < MAX_COMPANY; i++)
-		fprintf(save, "%d ", _rotl(cCompanyManager::GetInstance()->GetCompany(i).GetCompanyStatus(), 1));
+		fprintf(save, "%d ", _rotl(cCompanyManager::GetInstance()->GetCompany(i)->GetCompanyStatus(), 1));
 
 	fprintf(save, "%d %d %d %d %d %d %d %d %d %d %d %d",
 		_rotl(cPlayer::GetInstance()->GetMoney_info()->GetMoney(), 1),
@@ -137,7 +137,7 @@ void cData::Load()
 
 		fscanf(save, "%d ", &currentPrice);
 
-		cCompanyManager::GetInstance()->GetCompany(i).SetPrice(_rotr(currentPrice, 1));
+		GET_COMPANY(i)->SetPrice(_rotr(currentPrice, 1));
 	}
 
 	for (int i = 0; i < MAX_COMPANY; i++)
@@ -146,7 +146,7 @@ void cData::Load()
 
 		fscanf(save, "%d ", &compStatus);
 
-		cCompanyManager::GetInstance()->GetCompany(i).SetCompanyStatus(_rotr(compStatus, 1));
+		GET_COMPANY(i)->SetCompanyStatus(_rotr(compStatus, 1));
 	}
 
 	int playerMoney;

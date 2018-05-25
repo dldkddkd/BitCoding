@@ -23,14 +23,14 @@ bool cPlayerMarket::BuyStock(int order, int amount)
 	cNode temp;
 	cNode *pNow;
 
-	totalPrice = cCompanyManager::GetInstance()->GetCompany(order).GetPrice() * amount;
+	totalPrice = cCompanyManager::GetInstance()->GetCompany(order)->GetPrice() * amount;
 
 	if (totalPrice <= cPlayer::GetInstance()->GetMoney_info()->GetMoney())
 	{
 		system("cls");
 			
 		temp.SetCompanyNumber(order);
-		temp.SetPrice(cCompanyManager::GetInstance()->GetCompany(order).GetPrice());
+		temp.SetPrice(cCompanyManager::GetInstance()->GetCompany(order)->GetPrice());
 		temp.SetAmount(amount);
 
 		pNow = cPlayer::GetInstance()->GetStock_info()->GetStock().GetHead();
@@ -42,7 +42,7 @@ bool cPlayerMarket::BuyStock(int order, int amount)
 		cPlayer::GetInstance()->GetStock_info()->SetStockAmount(cPlayer::GetInstance()->GetStock_info()->GetStockAmount() + amount);
 
 		printf(" %d원을 주고 주식을 구입했습니다. 주식이 %d개입니다.\n",
-			cCompanyManager::GetInstance()->GetCompany(order).GetPrice(), 
+			cCompanyManager::GetInstance()->GetCompany(order)->GetPrice(), 
 			cPlayer::GetInstance()->GetStock_info()->GetStockAmount());
 
 			
@@ -65,7 +65,7 @@ void cPlayerMarket::SellStock(int indexStock, int amount)
 
 	cPlayer::GetInstance()->GetMoney_info()->SetMoney(
 		cPlayer::GetInstance()->GetMoney_info()->GetMoney() 
-		+ (cCompanyManager::GetInstance()->GetCompany(saleStock->GetCompanyNumber()).GetPrice() * amount)
+		+ (cCompanyManager::GetInstance()->GetCompany(saleStock->GetCompanyNumber())->GetPrice() * amount)
 	);
 
 	cPlayer::GetInstance()->GetStock_info()->SetStockAmount(
@@ -86,12 +86,12 @@ bool cAIPlayerMarket::BuyStock(int order, int amount)
 	cNode					temp;
 	cNode					*pNow;
 
-	totalPrice				= cCompanyManager::GetInstance()->GetCompany(order).GetPrice() * amount;
+	totalPrice				= cCompanyManager::GetInstance()->GetCompany(order)->GetPrice() * amount;
 
 	if (totalPrice <= cAIPlayer::GetInstance()->GetMoney_info()->GetMoney())
 	{
 		temp.SetCompanyNumber(order);
-		temp.SetPrice(cCompanyManager::GetInstance()->GetCompany(order).GetPrice());
+		temp.SetPrice(cCompanyManager::GetInstance()->GetCompany(order)->GetPrice());
 		temp.SetAmount(amount);
 
 		pNow				= cAIPlayer::GetInstance()->GetStock_info()->GetStock().GetHead();
@@ -119,7 +119,7 @@ void cAIPlayerMarket::SellStock(int indexStock, int amount)
 
 	cAIPlayer::GetInstance()->GetMoney_info()->SetMoney(
 		cAIPlayer::GetInstance()->GetMoney_info()->GetMoney()
-		+ (cCompanyManager::GetInstance()->GetCompany(saleStock->GetCompanyNumber()).GetPrice() * amount)
+		+ (cCompanyManager::GetInstance()->GetCompany(saleStock->GetCompanyNumber())->GetPrice() * amount)
 	);
 
 	cAIPlayer::GetInstance()->GetStock_info()->SetStockAmount(

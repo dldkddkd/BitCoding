@@ -73,7 +73,7 @@ public:
 	void					UpdateAllCompanyPrice();
 	void					UpdateGraphData();
 
-	cCompany				GetCompany(int _num);
+	cCompany*				GetCompany(int _num);
 
 	void					DrawNewspaper(int _selectComp);
 	void					ShowStockPrice(int _viewMode);

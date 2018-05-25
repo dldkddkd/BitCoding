@@ -315,8 +315,8 @@ void cGameManager::BuyMenu()
 	titleLine("주식 사기");
 
 	printf(" 현재 %s 회사의 주가는 %d원입니다.\n\n 몇 개를 구입하시겠습니까? (취소 : 0)",
-		cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetCompanyName(), 
-		cCompanyManager::GetInstance()->GetCompany(mSelectComp).GetPrice());
+		cCompanyManager::GetInstance()->GetCompany(mSelectComp)->GetCompanyName(), 
+		cCompanyManager::GetInstance()->GetCompany(mSelectComp)->GetPrice());
 
 	scanf("%d", &stock_amount);
 
@@ -399,7 +399,7 @@ void cGameManager::SellMenu()
 			if (stock_number >= page && stock_number < page + 10)
 				printf("\n %d. 회사 : %-20s, 가격 : %d원, 개수 : %d개",
 					stock_number,
-					cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber()).GetCompanyName(),
+					cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber())->GetCompanyName(),
 					pNow->GetPrice(), 
 					pNow->GetAmount());
 
@@ -413,15 +413,15 @@ void cGameManager::SellMenu()
 			return;
 		}
 
-		sale_profit			= cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetPrice() - selectStock->GetPrice();
+		sale_profit			= cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber())->GetPrice() - selectStock->GetPrice();
 
 		printf("\n 돌아가려면 Q를 누르세요.\n");
 
 		printf("\n [ 선택 주식 정보 ]\n\n 번호 : %d\n 회사 : %s\n 가격 : %d\n 현재 가격 : %d\n 매도 이익 : %d",
 			idx,
-			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetCompanyName(),
+			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber())->GetCompanyName(),
 			selectStock->GetPrice(),
-			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber()).GetPrice(),
+			cCompanyManager::GetInstance()->GetCompany(selectStock->GetCompanyNumber())->GetPrice(),
 			sale_profit);
 
 		key					= (char)_getch();
@@ -531,7 +531,7 @@ void cGameManager::ShowStockList()
 				if (stock_number >= page && stock_number < page + 10) /* 주식을 한 페이지 당 10개씩 출력합니다. */
 					printf("\n %d. 회사 : %-20s, 가격 : %d원, 개수 : %d개",
 						stock_number,
-						cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber()).GetCompanyName(),
+						cCompanyManager::GetInstance()->GetCompany(pNow->GetCompanyNumber())->GetCompanyName(),
 						pNow->GetPrice(),
 						pNow->GetAmount());
 

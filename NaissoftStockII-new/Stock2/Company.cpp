@@ -316,14 +316,14 @@ void cCompanyManager::UpdateGraphData()
 	}
 }
 
-cCompany cCompanyManager::GetCompany(int _num)
+cCompany* cCompanyManager::GetCompany(int _num)
 {
-	return mCompany[_num];
+	return &mCompany[_num];
 }
 
 void cCompanyManager::DrawNewspaper(int _selectComp)
 {
-	GetCompany(_selectComp).DrawNewspaper();
+	GetCompany(_selectComp)->DrawNewspaper();
 }
 
 /** Draw stock price on console

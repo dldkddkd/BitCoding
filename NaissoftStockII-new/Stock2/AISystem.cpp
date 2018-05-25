@@ -16,16 +16,16 @@ int cAIPlayer::SearchBuyComp()
 	// 주식 가격이 가장 낮고, 상태가 좋은 회사 하나 검색
 	int						result = -1;
 	int						compNum = 0;
-	cCompany				comp;
+	cCompany*				comp;
 
 	for (int i = 0; i < MAX_COMPANY; i++)
 	{
 		comp				= cCompanyManager::GetInstance()->GetCompany(i);
 
 		// 회사 상태고 좋고, 주식 가격이 가장 낮은 회사를 검색하여 가지고 있는다.
-		if (comp.GetCompanyStatus() == true)
+		if (comp->GetCompanyStatus() == true)
 		{
-			if (comp.GetPrice() < cCompanyManager::GetInstance()->GetCompany(compNum).GetPrice())
+			if (comp->GetPrice() < cCompanyManager::GetInstance()->GetCompany(compNum)->GetPrice())
 			{
 				compNum		= i;
 				result		= compNum;
@@ -49,7 +49,7 @@ INT64 cAIPlayer::SearchSellComp()
 
 	for (GameSystem::cNode* pNow = aiPlayer_stock.GetHead()->GetNextNode(); pNow != NULL; pNow = pNow->GetNextNode(), list_number++)
 	{
-		price_term			= GET_COMPANY(pNow->GetCompanyNumber()).GetPrice() - GET_COMPANY(pNow->GetCompanyNumber()).GetPrevPrice();
+		price_term			= GET_COMPANY(pNow->GetCompanyNumber())->GetPrice() - GET_COMPANY(pNow->GetCompanyNumber())->GetPrevPrice();
 	
 		if (max_term < price_term)
 		{
@@ -72,9 +72,9 @@ void cAIPlayer::Proc_StockBuy(int _comp)
 	int						amount;
 	int						money;
 
-	price_term				= GET_COMPANY(_comp).GetPrice() - GET_COMPANY(_comp).GetPrevPrice();
+	price_term				= GET_COMPANY(_comp)->GetPrice() - GET_COMPANY(_comp)->GetPrevPrice();
 	money					= mMoney.GetMoney() / 2;
-	max_amount				= money / GET_COMPANY(_comp).GetPrice();
+	max_amount				= money / GET_COMPANY(_comp)->GetPrice();
 
 	if (price_term < 0)
 		return;
