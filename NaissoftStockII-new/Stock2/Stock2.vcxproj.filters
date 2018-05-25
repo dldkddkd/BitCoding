@@ -89,12 +89,6 @@
     <ClCompile Include="Market.cpp">
       <Filter>StockGame\GameSystem\Market</Filter>
     </ClCompile>
-    <ClCompile Include="GameFunctions.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="StockFunctions.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="AISystem.cpp">
       <Filter>StockGame\GameSystem\AI</Filter>
     </ClCompile>
@@ -144,12 +138,6 @@
     </ClInclude>
     <ClInclude Include="Market.h">
       <Filter>StockGame\GameSystem\Market</Filter>
-    </ClInclude>
-    <ClInclude Include="GameFunctions.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="StockFunctions.h">
-      <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="AISystem.h">
       <Filter>StockGame\GameSystem\AI</Filter>
