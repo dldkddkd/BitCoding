@@ -33,24 +33,12 @@ public:
 	void						SetNextNode(cNode *_nextNode);
 	void						SetPrevNode(cNode *_prevNode);
 
-<<<<<<< HEAD
-extern Stock comStock[10];
-
-void InitStock();
-
-void InitComputerStock();
-
-Stock *InsertStock(Stock *Target, Stock *aStock);
-=======
 	int							GetPrice();
 	int		 					GetCompanyNumber();
 	int							GetAmount();
 	bool						GetIfChecked();
 	cNode*						GetNextNode();
 	cNode*						GetPrevNode();
-
->>>>>>> new_gamesystem
-
 };
 class cStock
 {

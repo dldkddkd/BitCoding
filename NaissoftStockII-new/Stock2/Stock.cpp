@@ -9,49 +9,12 @@ void cNode::SetPrice(int _price)
 	mPrice						= _price;
 }
 
-<<<<<<< HEAD
-Stock comStock[10];
-
-/** Initialize stock node
-*
-* @return void
-*/
-void InitStock()
-=======
 void cNode::SetCompanyNumber(int _compNum)
->>>>>>> new_gamesystem
 {
 	mCompNum					= _compNum;
 }
-/** Initialize Computer stock node
-*
-* @return void
-*/
-void InitComputerStock() {
-	int i;
-	
-	for (i = 0; i < 10; i++) {
-		comStock[i].company = 0;
-		comStock[i].price = 0;
-	}
 
-<<<<<<< HEAD
-}
-/** Insert stock next target node
-*
-* @param *pTarget
-* Where to insert
-*
-* @param *aStock
-* The node to insert
-*
-* @return Stock pointer
-* New node inserted
-*/
-Stock *InsertStock(Stock *pTarget, Stock *aStock)
-=======
 void cNode::SetAmount(int _amount)
->>>>>>> new_gamesystem
 {
 	mAmount						= _amount;
 }
