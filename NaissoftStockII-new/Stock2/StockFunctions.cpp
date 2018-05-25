@@ -229,7 +229,7 @@ void Interest()
 void Payback()
 {
 	// TODO:: 금액이 모자란 경우에도 대출을 갚을수가 있으며, 돈은 -가 되어버림. 수정 필요.
-	if (Money >= loanMoney)
+	if (Money >= (unsigned long)loanMoney)
 	{
 		Money -= loanMoney;
 		loanMoney = 0;
@@ -245,9 +245,11 @@ void Payback()
 * @param amount
 * Amount of stocks
 *
-* @return void
+* @return bool
+* If the user buys stock, return true
+* If the user can't buy stock, return false
 */
-void BuyStock(int order, int amount)
+bool BuyStock(int order, int amount)
 {
 	Stock temp;
 
@@ -274,9 +276,15 @@ void BuyStock(int order, int amount)
 		}
 		else
 		{
-			printf(" 돈이 부족합니다. 주식을 살 수 없습니다.\n");
+			printf("\n 돈이 부족합니다. 주식을 살 수 없습니다.\n");
+			
+			/* 만약 살 때 처음 부터 사지 못하면 false 반환 */
+			if (i == 0)
+				return false;
+
 		}
 	}
+	return true;
 }
 
 /** Sell a stock and delete it on list
@@ -341,7 +349,7 @@ void ShowStockList(void)
 			}
 			printf("\n 돌아가려면 Q를 누르세요.\n");
 
-			key = getch();
+			key = _getch();
 			if (key == 'D' || key == 'd')
 			{
 				listPage += 10;

@@ -3,19 +3,14 @@
 // (c) 2016~2018 Naissoft.
 //
 
-#include "GameFunctions.h"
+#include "global.h"
 
-int main(void)
+void main()
 {
-	// 메인 함수에서 초기 게임 메뉴 선택 및 게임 루프 전체 처리.
-	// TODO:: 메뉴, 게임 루프 기능별 캡슐화 및 클래스화 필요.
-	int menu, cnt, order;
-	char c, pausemenu;
-
 	system("title Stock 2 - 주식 게임 2");
-
 	system("mode con: cols=120 lines=40");
 
+<<<<<<< HEAD
 	startLogo();
 
 	printMainMenu();
@@ -219,3 +214,7 @@ int main(void)
 	DeallocateStock();
 	return 0;
 }
+=======
+	cGameManager::GetInstance()->onStart();
+}
+>>>>>>> new_gamesystem

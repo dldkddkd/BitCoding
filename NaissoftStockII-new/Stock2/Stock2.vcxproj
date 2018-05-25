@@ -141,19 +141,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AISystem.cpp" />
     <ClCompile Include="Arts.cpp" />
-    <ClCompile Include="GameFunctions.cpp" />
+    <ClCompile Include="Bank.cpp" />
+    <ClCompile Include="Company.cpp" />
+    <ClCompile Include="Data.cpp" />
+    <ClCompile Include="GameFunctions.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Lib.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Market.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClInclude Include="AISystem.h" />
+    <ClInclude Include="Data.h" />
+    <ClInclude Include="GameFunctions.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Market.h" />
+    <ClInclude Include="Singleton.inl">
+      <FileType>Document</FileType>
+    </ClInclude>
     <ClCompile Include="Stock.cpp" />
-    <ClCompile Include="StockFunctions.cpp" />
+    <ClCompile Include="StockFunctions.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Arts.h" />
-    <ClInclude Include="GameFunctions.h" />
+    <ClInclude Include="Bank.h" />
+    <ClInclude Include="Company.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GameSystem.h" />
+    <ClInclude Include="global.h" />
     <ClInclude Include="Lib.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Singleton.h" />
     <ClInclude Include="Stock.h" />
-    <ClInclude Include="StockFunctions.h" />
+    <ClInclude Include="StockFunctions.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

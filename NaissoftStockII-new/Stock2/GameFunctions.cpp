@@ -210,6 +210,8 @@ void BuyMenu(int order)
 	// HACK:: 구매프로세스 변경 필요. 개수에 따라 반복문을 돌면서 하나씩 구매하고 있음.
 	int amountOfStocks;
 
+	bool deal;
+
 	system("cls");
 	titleLine("주식 사기");
 
@@ -217,12 +219,19 @@ void BuyMenu(int order)
 		, CompanyName[order], StockPrice[order]);
 
 	scanf("%d", &amountOfStocks);
+
 	if (amountOfStocks > 0)
 	{
-		BuyStock(order, amountOfStocks);
-		printf("\n\n 구입하였습니다.");
-		Sleep(2000);
+		deal = BuyStock(order, amountOfStocks);
+
+		if (deal)
+			printf("\n\n 구입하였습니다.");
+		else
+			printf("\n\n 구입하지 못했습니다");
+
+		Sleep(3000);
 	}
+
 	system("cls");
 	return;
 }
@@ -290,6 +299,7 @@ void SellMenu()
 		printf("\n [ W / S로 팔 주식을 고르세요. A / D로 더 볼 수 있습니다. B를 누르면 팝니다. ]\n\n");
 
 		numberOfStocks = 1;
+
 		/* 주식 연결리스트를 순회하면서 가지고 있는 회사 주식 가격을 출력합니다 */
 		for (gNow = gHead->next; gNow != NULL; gNow = gNow->next)
 		{
@@ -300,6 +310,7 @@ void SellMenu()
 
 			numberOfStocks++;
 		}
+
 		printf("\n 돌아가려면 Q를 누르세요.\n");
 
 		selectStock = FindStock(idx - 1);
@@ -314,7 +325,7 @@ void SellMenu()
 			, selectStock->price, StockPrice[selectStock->company]
 			, profitOnSale);
 
-		key = getch();
+		key = (char)_getch();
 
 		switch (key)
 		{
@@ -384,9 +395,12 @@ void ComputerSellStock()
 void showStats()
 {
 	system("cls");
+
 	titleLine("통  계");
 	printf("\n 주식을 사거나 판 횟수 : %d\n 현재 가진 돈 : %d원\n 주식 개수 : %d\n\n 돌아가려면 Enter를 누르세요.\n", StockDeal, Money, Stocks);
-	getchar();
+
+	while (getchar() != '\n');
+
 	system("cls");
 }
 

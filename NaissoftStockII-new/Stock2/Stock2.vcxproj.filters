@@ -5,50 +5,154 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="헤더 파일">
+    <Filter Include="StockGame">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="StockGame\GameSystem">
+      <UniqueIdentifier>{827cece8-0026-47c8-b9e8-027345c68033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\Company">
+      <UniqueIdentifier>{82a41252-bfa4-4acb-95ec-fd8fd3ce2df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\Bank">
+      <UniqueIdentifier>{be6da35c-05a9-422a-b2fe-ebd9d31e8bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\GameLoop">
+      <UniqueIdentifier>{124d70f9-cbdb-4f8c-ab73-333f4ec6c071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\Core">
+      <UniqueIdentifier>{49d95736-d8e6-43c8-93d8-4beab098b957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\Core\Design pattern">
+      <UniqueIdentifier>{ad3e7f25-0422-43b5-ab4a-05fb73ba311a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\Core\Timer">
+      <UniqueIdentifier>{edde8c1f-851a-4b37-a511-bae4581785be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\Core\Data">
+      <UniqueIdentifier>{99319535-e6dc-44c0-abbe-1e067a90df30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Naissoft">
+      <UniqueIdentifier>{c1ccc652-f9f4-4cc3-aa2f-ba6c16ce78eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Naissoft\Arts">
+      <UniqueIdentifier>{1a1f27e3-8356-421d-ac40-e7123dcad232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Naissoft\Lib">
+      <UniqueIdentifier>{4128fa34-d1b8-43e5-94c4-d23f0874ea96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\Market">
+      <UniqueIdentifier>{844d41db-8d83-441d-bdeb-50d9e12df319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\Stock">
+      <UniqueIdentifier>{d5b8bb24-18f8-4062-9651-12e06a017a68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\Player">
+      <UniqueIdentifier>{129313ed-2c9a-493e-82e1-0d938d2c34db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="StockGame\GameSystem\AI">
+      <UniqueIdentifier>{3fbe16a3-185e-478f-a090-9c75e0ceccc4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Arts.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Player.cpp">
+      <Filter>StockGame\GameSystem\Player</Filter>
     </ClCompile>
-    <ClCompile Include="GameFunctions.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Company.cpp">
+      <Filter>StockGame\GameSystem\Company</Filter>
+    </ClCompile>
+    <ClCompile Include="Bank.cpp">
+      <Filter>StockGame\GameSystem\Bank</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>StockGame\Core\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>StockGame\GameSystem\GameLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="Data.cpp">
+      <Filter>StockGame\Core\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Arts.cpp">
+      <Filter>Naissoft\Arts</Filter>
     </ClCompile>
     <ClCompile Include="Lib.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Naissoft\Lib</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>StockGame</Filter>
     </ClCompile>
     <ClCompile Include="Stock.cpp">
+      <Filter>StockGame\GameSystem\Stock</Filter>
+    </ClCompile>
+    <ClCompile Include="Market.cpp">
+      <Filter>StockGame\GameSystem\Market</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFunctions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="StockFunctions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="AISystem.cpp">
+      <Filter>StockGame\GameSystem\AI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Arts.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="GameSystem.h">
+      <Filter>StockGame\GameSystem</Filter>
     </ClInclude>
-    <ClInclude Include="GameFunctions.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="Singleton.h">
+      <Filter>StockGame\Core\Design pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>StockGame\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Company.h">
+      <Filter>StockGame\GameSystem\Company</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>StockGame\GameSystem\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Bank.h">
+      <Filter>StockGame\GameSystem\Bank</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.inl">
+      <Filter>StockGame\Core\Design pattern</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>StockGame\GameSystem\GameLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>StockGame\Core\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>StockGame\Core\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Arts.h">
+      <Filter>Naissoft\Arts</Filter>
     </ClInclude>
     <ClInclude Include="Lib.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Naissoft\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="global.h">
+      <Filter>StockGame</Filter>
     </ClInclude>
     <ClInclude Include="Stock.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>StockGame\GameSystem\Stock</Filter>
+    </ClInclude>
+    <ClInclude Include="Market.h">
+      <Filter>StockGame\GameSystem\Market</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFunctions.h">
+      <Filter>소스 파일</Filter>
     </ClInclude>
     <ClInclude Include="StockFunctions.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AISystem.h">
+      <Filter>StockGame\GameSystem\AI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

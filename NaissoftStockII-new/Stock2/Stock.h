@@ -1,23 +1,39 @@
 /*
-* Header file : Stock.h
-* Author : Naissoft
-* Stock 자료구조 이중 연결 리스트
-* Remark : 2018.04.29 조경제.
-*
-*/
+ * Stock.h
+ *
+ * Stock 자료구조 이중 연결 리스트
+ *
+ * Created on : 2018-05-01
+ *     Author : Naissoft
+ *	   Remark : 2018.04.29 조경제.
+ */
+#pragma once
 
-struct Stock
+namespace GameSystem
 {
-	int price;
-	int company;
-	bool ifChecked;
+class cNode
+{
+public:
+	cNode() {}
+	virtual ~cNode() {}
+private:
+	int							mPrice;
+	int							mCompNum;
+	int							mAmount;
 
-	Stock *next;
-	Stock *prev;
-};
+	bool						mIfChecked;
 
-extern Stock *gHead, *gNow, gTmp;
+	cNode*						mpNextNode;
+	cNode*						mpPrevNode;
+public:
+	void						SetPrice(int _price);
+	void						SetCompanyNumber(int _compNum);
+	void						SetAmount(int _amount);
+	void						SetIfChecked(bool _ifChecked);
+	void						SetNextNode(cNode *_nextNode);
+	void						SetPrevNode(cNode *_prevNode);
 
+<<<<<<< HEAD
 extern Stock comStock[10];
 
 void InitStock();
@@ -25,11 +41,37 @@ void InitStock();
 void InitComputerStock();
 
 Stock *InsertStock(Stock *Target, Stock *aStock);
+=======
+	int							GetPrice();
+	int		 					GetCompanyNumber();
+	int							GetAmount();
+	bool						GetIfChecked();
+	cNode*						GetNextNode();
+	cNode*						GetPrevNode();
 
-bool DeleteStock(Stock *Target);
+>>>>>>> new_gamesystem
 
-void AppendStock(Stock);
+};
+class cStock
+{
+public:
+	cStock() 
+	{
+		mHead = new cNode;
+		mHead->SetNextNode(NULL);
+		mHead->SetPrevNode(NULL);
+	}
+	virtual ~cStock() {}
 
-Stock *FindStock(int);
+private:
+	cNode*						mHead;
 
-void DeallocateStock();
+public:
+	cNode*						InsertNode(cNode* pTarget, cNode *insertStock);
+	bool						DeleteNode(cNode *deleteStock);
+	cNode*						SearchNode(int index);
+	
+	cNode*						GetHead();
+};
+
+}
