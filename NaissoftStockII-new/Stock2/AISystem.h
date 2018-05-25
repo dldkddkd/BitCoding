@@ -14,21 +14,21 @@ namespace GameSystem
 class cAIPlayer : public cPlayData, public Core::cSingleton<cAIPlayer>
 {
 public:
-	cAIPlayer()
-	{
-
-	}
-
-	virtual ~cAIPlayer()
-	{
-
-	}
+	cAIPlayer() {}
+	virtual ~cAIPlayer() {}
 
 private:
+	cAIPlayerMarket			mMarket;
+
+private:
+	int						SearchBuyComp();
+	INT64					SearchSellComp();
+	
+	void					Proc_StockBuy(int _comp);
+	void					Proc_StockSell(INT64 _comp);
 
 public:
 	void					onUpdate();
-
 };
 
 }

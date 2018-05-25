@@ -20,7 +20,8 @@ void cDrawGame::ShowMain()
 		printf("\n W ±â´Ù¸®±â");
 
 	gotoxy(0, 5);
-	printf("\n ÇöÀç ³» µ· : %d¿ø, °±¾Æ¾ß ÇÒ µ· : %d¿ø\n\n\n\n", cPlayer::GetInstance()->GetMoney_info()->GetMoney(), cPlayer::GetInstance()->GetMoney_info()->GetLoan());
+	printf("\n ÇöÀç ³» µ· : %d¿ø, °±¾Æ¾ß ÇÒ µ· : %d¿ø\n", cPlayer::GetInstance()->GetMoney_info()->GetMoney(), cPlayer::GetInstance()->GetMoney_info()->GetLoan());
+	printf(" ÄÄÇ»ÅÍ µ· : %d¿ø\n\n\n", cAIPlayer::GetInstance()->GetMoney_info()->GetMoney());
 
 	cCompanyManager::GetInstance()->ShowStockPrice(mStockViewMode);
 
@@ -46,11 +47,10 @@ void cGameManager::InitGame()
 	startLogo();
 
 	cPlayer::GetInstance()->Init();
+	cAIPlayer::GetInstance()->Init();
 	cCompanyManager::GetInstance()->Init();
 	cBank::GetInstance()->Init();
 	cTimer::GetInstance()->Init();
-
-	//TODO:: Stock List init
 }
 
 void cGameManager::SelectStartMenu()

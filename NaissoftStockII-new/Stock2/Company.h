@@ -18,6 +18,13 @@ namespace GameSystem
 #define MAX_COMPANY			10
 #define COMPANY_NAME_SIZE	32
 
+#define MAX_UP_PRICE		1000
+#define LOW_UP_PRICE		500
+#define MAX_DOWN_PRICE		1000
+#define LOW_DOWN_PRICE		100
+
+#define GET_COMPANY(num)	cCompanyManager::GetInstance()->GetCompany(num)
+
 extern char gCompanyName[MAX_COMPANY][COMPANY_NAME_SIZE];
 
 class cCompany

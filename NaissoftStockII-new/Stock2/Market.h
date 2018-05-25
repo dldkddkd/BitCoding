@@ -14,8 +14,8 @@ namespace GameSystem
 class cMarket
 {
 public:
-	cMarket() {};
-	virtual ~cMarket() {};
+	cMarket() {}
+	virtual ~cMarket() {}
 
 public:
 	virtual bool					BuyStock(int order, int amount) = 0;
@@ -26,13 +26,25 @@ public:
 class cPlayerMarket : public cMarket
 {
 public:
-	cPlayerMarket() {};
-	virtual ~cPlayerMarket() {};
+	cPlayerMarket() {}
+	virtual ~cPlayerMarket() {}
 
 public:
 	bool					BuyStock(int order, int amount);
 	void					SellStock(int indexStock, int amount);
 
 };
+
+class cAIPlayerMarket : public cMarket
+{
+public:
+	cAIPlayerMarket() {}
+	virtual ~cAIPlayerMarket() {}
+
+public:
+	bool					BuyStock(int order, int amount);
+	void					SellStock(int indexStock, int amount);
+};
+
 }
 

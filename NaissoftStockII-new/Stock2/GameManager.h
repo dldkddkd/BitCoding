@@ -45,7 +45,6 @@ private:
 	int						mSelectComp;
 
 	cDrawGame				mDrawGame;
-
 	cPlayerMarket			mPlayerMarket;
 	
 private:

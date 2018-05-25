@@ -118,16 +118,16 @@ void cCompany::UpdatePrice()
 	if (mCompStatus == true)
 	{
 		if ((rand() % 2) == 0)
-			mPrice			+= (rand() % 1000);
+			mPrice			+= (rand() % MAX_UP_PRICE);
 		else
-			mPrice			-= (rand() % 100);
+			mPrice			-= (rand() % LOW_DOWN_PRICE);
 	}
 	else
 	{
 		if ((rand() % 2) == 0)
-			mPrice			+= (rand() % 500);
+			mPrice			+= (rand() % LOW_UP_PRICE);
 		else
-			mPrice			-= (rand() % 1000);
+			mPrice			-= (rand() % MAX_DOWN_PRICE);
 	}
 
 	// 각 회사의 주식 가격은 2000 이하로 떨어지지 않는다.

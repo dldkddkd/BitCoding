@@ -74,8 +74,6 @@ void cBank::Proc_loan()
 
 void cBank::Proc_payback()
 {
-	//TODO:: 기존 대출 상환처럼 할지, 아니면 새롭게 구현할지 논의 필요.
-
 	int						payback_money;
 
 	system("cls");

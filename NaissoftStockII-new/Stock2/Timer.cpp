@@ -41,6 +41,7 @@ void cTimer::Update()
 	// 1ÃÊ == 1½Ã°£
 	if (mCnt % 20 == 0)
 	{
+		cAIPlayer::GetInstance()->onUpdate();
 		cCompanyManager::GetInstance()->UpdateAllCompanyPrice();
 		cCompanyManager::GetInstance()->UpdateGraphData();
 		mHour++;
@@ -68,6 +69,7 @@ void cTimer::Update()
 		mDay				= 0;
 		mMonth++; 
 		cPlayer::GetInstance()->GetMoney_info()->Tax();
+		cAIPlayer::GetInstance()->GetMoney_info()->Tax();
 	}
 
 	if (mMonth > 11)
