@@ -65,6 +65,8 @@ private:
 	void					ShowStatistics();
 
 public:
+	cDrawGame				GetDrawGame();
+
 	void					onStart();
 };
 
