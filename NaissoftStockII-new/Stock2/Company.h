@@ -72,17 +72,10 @@ public:
 	void					UpdateAllCompanyStatus();
 	void					UpdateAllCompanyPrice();
 	void					UpdateGraphData();
-	struct ComputerStock {
-		int amount;
-		int company;
-		int price;
-	}cs[10];
 
 	cCompany*				GetCompany(int _num);
 
 	void					DrawNewspaper(int _selectComp);
-	void					ComputerBuyStock(int*);
-	void					ComputerSellStock(int*);
 	
 	void					ShowStockPrice(int _viewMode);
 	void					DrawGraph(int _comp);

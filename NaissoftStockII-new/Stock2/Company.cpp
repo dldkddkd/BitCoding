@@ -284,9 +284,6 @@ void cCompanyManager::Init()
 		mCompany[i].SetCompanyStatus(true);
 		mCompany[i].SetPrice(9000);
 		mCompany[i].UpdatePrice();
-		cs[i].amount = 0;
-		cs[i].company = i;
-		cs[i].price = 0;
 	}
 }
 
@@ -413,65 +410,6 @@ void cCompanyManager::ShowStockPrice(int _viewMode)
 	}
 }
 
-/** Computer buy stock price on console
-*
-* @param mode,*computer_money
-* 만약 모드가 0이면 주식상대(컴퓨터)가 주식을 구입합니다
-* 만약 모드가 1이면 주식상대(컴퓨터)가 주식 구입을 하지 않습니다
-*
-* @return int
-*/
-void cCompanyManager::ComputerBuyStock(int *computer_money) {
-	int i, j = -1, max = 0;
-
-	//전날 대비 최대 가격 상승한 주식 찾기
-	for (i = 0; i < 10; i++) {
-		if (mCompany[i].GetPrice() - mCompany[i].GetPrevPrice() > max) {
-			max = mCompany[i].GetPrice() - mCompany[i].GetPrevPrice();
-			j = i;
-		}
-	}
-	//돈이 없으면 컴퓨터는 자동으로 구매 취소
-	if ((mCompany[j].GetPrice() > *computer_money) || (j < 0))
-		return;
-
-	//여기서 comStock[j].company변수는 컴퓨터가 그 회사의 주식을 산 개수를 의미함
-	cs[j].amount = *computer_money / mCompany[j].GetPrice();
-	
-	//컴퓨터가 산 주식의 당시 가격을 저장
-	cs[j].price = mCompany[j].GetPrice();
-
-	//구매한 비용만큼 컴퓨터가 가진 비용 차감
-	*computer_money -= mCompany[j].GetPrice() * cs[j].amount;
-	
-	return;
-}
-
-/** Computer sell stock price on console
-*
-* @param mode,*computer_money
-* 만약 모드가 0이면 주식상대(컴퓨터)가 주식을 판매합니다
-* 만약 모드가 1이면 주식상대(컴퓨터)가 주식 판매를 하지 않습니다
-*
-* @return int
-*/
-void cCompanyManager::ComputerSellStock(int *computer_money) {
-	int i;
-	
-	//컴퓨터가 산 주식 중에 이득을 조금이라도 봤거나
-	//10%이상 손해가 나면 바로 판매
-	//그 이외의 조건은 그대로 진행
-	for (i = 0; i < 10; i++) {
-		if (cs[i].amount <= 0)
-			continue;
-		if ((cs[i].price < mCompany[i].GetPrice()) || (cs[i].price * 9 / 10 >= mCompany[i].GetPrice())) {
-			*computer_money += mCompany[i].GetPrice() * cs[i].amount;
-			cs[i].amount = 0;
-			cs[i].price = 0;
-		}
-	}
-	return;
-}
 void cCompanyManager::DrawGraph(int _comp)
 {
 	// 현재 선택 된 주식 가격 변화 추이
