@@ -316,9 +316,9 @@ void cGameManager::onStart()
 
 void cGameManager::BuyMenu()
 {
-	int stock_amount;
+	int						stock_amount;
 
-	bool deal;
+	bool					deal;
 
 	system("cls");
 	titleLine("주식 사기");
@@ -351,21 +351,21 @@ void cGameManager::BuyMenu()
 }
 
 void cGameManager::SellMenu()
-{
-	int idx;
-	int page;
+{	
+	int						idx;
+	int						page;
 
-	int sale_profit;
+	int						sale_profit;
 
-	int stock_number;
-	int stock_amount;
+	int						stock_number;
+	int						stock_amount;
 
-	char key;
+	char					key;
 
-	cNode *selectStock;
-	cNode *pNow;
+	cNode					*selectStock;
+	cNode					*pNow;
 
-	cStock player_stock;
+	cStock					player_stock;
 
 	key						= '\0';
 	page					= 1;
@@ -498,19 +498,19 @@ void cGameManager::SellMenu()
 
 void cGameManager::ShowStockList()
 {
-	int stock_number;
-	int page;
+	int						stock_number;
+	int						page;
 
-	char key;
+	char					key;
 
-	cStock player_stock;
+	cStock					player_stock;
 
 	system("cls");
 
-	key							= '\0';
-	page						= 1;
+	key						= '\0';
+	page					= 1;
 
-	player_stock				= cPlayer::GetInstance()->GetStock_info()->GetStock();
+	player_stock			= cPlayer::GetInstance()->GetStock_info()->GetStock();
 
 	if (cPlayer::GetInstance()->GetStock_info()->GetStockAmount() <= 0)
 	{
@@ -532,7 +532,7 @@ void cGameManager::ShowStockList()
 
 			printf("\n [ A, D로 더 보실 수 있습니다. ]\n\n");
 
-			stock_number		= 1;
+			stock_number	= 1;
 
 			/* 주식 연결리스트를 순회하면서 가지고 있는 회사 주식 가격을 출력합니다 */
 			for (cNode *pNow = player_stock.GetHead()->GetNextNode(); pNow != NULL; pNow = pNow->GetNextNode())
@@ -558,7 +558,7 @@ void cGameManager::ShowStockList()
 			else if (key == 'A' || key == 'a')
 			{
 				if (page > 10)
-					page		-= 10;
+					page	-= 10;
 			}
 		}
 	}
