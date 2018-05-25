@@ -59,29 +59,32 @@ void cGameManager::InitGame()
 
 void cGameManager::SelectStartMenu()
 {
-	int						select;
+	char					select = '\0';
 
 	printMainMenu();
-	scanf("%d", &select);
 
-	switch (select)
+	while (select != '1' && select != '2')
 	{
-	case 1:
-		cData::GetInstance()->Save();
-		break;
+		GetKey(&select);
+		
+		switch (select)
+		{
+		case '1':
+			cData::GetInstance()->Save();
+			break;
 
-	case 2:
-		cData::GetInstance()->Load();
-		break;
+		case '2':
+			cData::GetInstance()->Load();
+			break;
 
-	case 3:
-		exit(0);
-		break;
+		case '3':
+			exit(0);
+			break;
 
-	default:
-		break;
+		default:
+			break;
+		}
 	}
-	
 	system("cls");
 }
 
