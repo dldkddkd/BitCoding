@@ -51,6 +51,9 @@
     <Filter Include="StockGame\GameSystem\Player">
       <UniqueIdentifier>{129313ed-2c9a-493e-82e1-0d938d2c34db}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StockGame\GameSystem\AI">
+      <UniqueIdentifier>{3fbe16a3-185e-478f-a090-9c75e0ceccc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">
@@ -91,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="StockFunctions.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="AISystem.cpp">
+      <Filter>StockGame\GameSystem\AI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +150,9 @@
     </ClInclude>
     <ClInclude Include="StockFunctions.h">
       <Filter>소스 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AISystem.h">
+      <Filter>StockGame\GameSystem\AI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

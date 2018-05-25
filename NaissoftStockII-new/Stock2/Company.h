@@ -72,6 +72,7 @@ public:
 	void					ShowStockPrice(int _viewMode);
 	void					DrawGraph(int _comp);
 	void					ShowCompanyReport(int _comp);
+	void					ShowCompanyInfo();
 };
 
 }

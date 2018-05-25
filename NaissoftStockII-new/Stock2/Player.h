@@ -42,8 +42,6 @@ public:
 	virtual ~cStock_info() {}
 
 private:
-	//TDOD:: 추가 필요한 변수
-	//		 보유하고 있는 회사 주식
 	int						stock_deal_count;	// 주식거래 횟수
 	int						mStockAmount;
 	cStock					mStock;
@@ -58,13 +56,13 @@ public:
 	cStock					GetStock();
 };
 
-class cPlayer : public Core::cSingleton<cPlayer>
+class cPlayData
 {
 public:
-	cPlayer() {}
-	virtual ~cPlayer() {}
+	cPlayData() {}
+	virtual ~cPlayData() {}
 
-private:
+protected:
 	cMoney_info				mMoney;
 	cStock_info				mStock;
 
@@ -73,6 +71,18 @@ public:
 
 	cMoney_info*			GetMoney_info();
 	cStock_info*			GetStock_info();
+};
+
+class cPlayer : public cPlayData, public Core::cSingleton<cPlayer>
+{
+public:
+	cPlayer() {}
+	virtual ~cPlayer() {}
+
+private:
+
+public:
+
 };
 
 }

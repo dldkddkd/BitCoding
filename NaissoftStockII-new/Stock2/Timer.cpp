@@ -93,6 +93,11 @@ void cTimer::ManualUpdate()
 	Sleep(100);
 }
 
+void cTimer::SetTimerMode(int _mode)
+{
+	mTimerMode				= _mode;
+}
+
 int cTimer::GetHour()
 {
 	return mHour;

@@ -35,6 +35,8 @@ public:
 	void					Update();
 	void					ManualUpdate();
 
+	void					SetTimerMode(int _mode);
+
 	int						GetHour();
 	int						GetDay();
 	int						GetMonth();

@@ -132,6 +132,7 @@ void cGameManager::SelectGameMenu()
 
 	case 'I':
 	case 'i':
+		cCompanyManager::GetInstance()->ShowCompanyInfo();
 		break;
 
 	case '2':
@@ -172,6 +173,7 @@ void cGameManager::SelectPauseMenu()
 		break;
 
 	case '4':
+		SelectSettingMenu();
 		break;
 
 	case '5':
@@ -191,6 +193,65 @@ void cGameManager::SelectPauseMenu()
 	default:
 		break;
 	}
+}
+
+void cGameManager::SelectSettingMenu()
+{
+	char					select;
+	system("cls");
+	titleLine("설  정");
+	printf(" 1. 보기 모드 전환\n 2. 시간 흐름 방식 전환\n Esc 돌아가기");
+
+	select					= (char)_getch();
+
+	switch (select)
+	{
+	case '1':
+		mDrawGame.SetStockViewMode(mDrawGame.GetStockViewMode() + 1);
+		
+		if (mDrawGame.GetStockViewMode() > 2)
+			mDrawGame.SetStockViewMode(0);
+
+		switch (mDrawGame.GetStockViewMode())
+		{
+		case 0:
+			printf(" 보기 방식이 기본 모드로 전환되었습니다.");
+			break;
+		case 1:
+			printf(" 보기 방식이 내림차순 모드로 전환되었습니다.");
+			break;
+		case 2:
+			printf(" 보기 방식이 오름차순 모드로 전환되었습니다.");
+			break;
+		}
+		break;
+
+	case '2':
+		cTimer::GetInstance()->SetTimerMode(cTimer::GetInstance()->GetTimerMode() + 1);
+
+		if (cTimer::GetInstance()->GetTimerMode() > 1) 
+			cTimer::GetInstance()->SetTimerMode(0);
+
+		switch (cTimer::GetInstance()->GetTimerMode())
+		{
+		case 0:
+			printf(" 시간 흐름이 자동으로 전환되었습니다.");
+			break;
+		case 1:
+			printf(" 시간 흐름이 수동으로 전환되었습니다.");
+			break;
+		}
+		break;
+
+	case 27:
+		break;
+
+	default:
+		break;
+	}
+	Sleep(300);
+	system("cls");
+	return;
 }
 
 void cGameManager::GetKey(char* c)
@@ -511,4 +572,5 @@ void cGameManager::ShowStatistics()
 
 	system("cls");
 }
+
 }

@@ -15,6 +15,7 @@
 #include "Stock.h"
 #include "Player.h"
 #include "Bank.h"
+#include "AISystem.h"
 
 namespace GameSystem
 {

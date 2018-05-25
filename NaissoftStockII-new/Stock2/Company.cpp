@@ -466,4 +466,40 @@ void cCompanyManager::ShowCompanyReport(int _comp)
 	printf("전문가 의견 : %s", mCompany[_comp].GetCompanyStatus() ? "긍정적" : "부정적");
 }
 
+void cCompanyManager::ShowCompanyInfo()
+{
+	int						i = 0;
+	char					ch = '\0';
+
+	system("cls");
+
+	while (ch != 27)
+	{
+		system("cls");
+		titleLine("회사 정보");
+
+		gotoxy(0, 5);
+		printf(" %d / %d. W, S 키로 넘겨 볼 수 있습니다. Esc로 나가기\n 회사 : %s\n\n", i + 1, MAX_COMPANY, mCompany[i].GetCompanyName());
+		printf("%s", gInfos[i]);
+
+		ch					= (char)_getch();
+
+		switch (ch)
+		{
+		case 'W':
+		case 'w':
+			if (i < MAX_COMPANY - 1) 
+				i++;
+			break;
+
+		case 'S':
+		case 's':
+			if (i > 0)
+				i--;
+			break;
+		}
+	}
+	system("cls");
+}
+
 }

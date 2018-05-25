@@ -54,6 +54,7 @@ private:
 	void					SelectStartMenu();
 	void					SelectGameMenu();
 	void					SelectPauseMenu();
+	void					SelectSettingMenu();
 
 	void					GetKey(char* c);
 
