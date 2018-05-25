@@ -59,9 +59,24 @@ void cStock_info::SetStockDealCount(int _count)
 	stock_deal_count		= _count;
 }
 
+void cStock_info::SetStockAmount(int _number)
+{
+	mStockAmount			= _number;
+}
+
 int cStock_info::GetStockDealCount()
 {
 	return stock_deal_count;
+}
+
+int cStock_info::GetStockAmount()
+{
+	return mStockAmount;
+}
+
+cStock cStock_info::GetStock()
+{
+	return mStock;
 }
 
 void cPlayer::Init()
@@ -71,6 +86,7 @@ void cPlayer::Init()
 	mMoney.SetInterest(DEFAULT_INTER_RATE);
 
 	mStock.SetStockDealCount(0);
+	mStock.SetStockAmount(0);
 }
 
 cMoney_info* cPlayer::GetMoney_info()
@@ -82,5 +98,6 @@ cStock_info* cPlayer::GetStock_info()
 {
 	return &mStock;
 }
+
 
 }

@@ -1,123 +1,126 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "global.h"
 
-#include "Stock.h"
 
-Stock *gHead, *gNow, gTmp;
-
-/** Initialize stock node
-*
-* @return void
-*/
-void InitStock()
+namespace GameSystem
 {
-	gHead = (Stock *)malloc(sizeof(Stock));
-	gHead->next = NULL;
-	gHead->prev = NULL;
+	
+void cNode::SetPrice(int _price)
+{
+	mPrice						= _price;
 }
 
-/** Insert stock next target node
-*
-* @param *pTarget
-* Where to insert
-*
-* @param *aStock
-* The node to insert
-*
-* @return Stock pointer
-* New node inserted
-*/
-Stock *InsertStock(Stock *pTarget, Stock *aStock)
+void cNode::SetCompanyNumber(int _compNum)
 {
-	Stock *pNew;
-	Stock *pRight;
-
-	pNew = (Stock *)malloc(sizeof(Stock));
-	*pNew = *aStock;
-
-	pRight = pTarget->next;
-	pNew->next = pRight;
-	pNew->prev = pTarget;
-
-	pTarget->next = pNew;
-
-	if (pRight) 
-		pRight->prev = pNew;
-
-	return pNew;
+	mCompNum					= _compNum;
 }
 
-/** Delete a target node
-*
-* @param *pTarget
-* Node to delete
-*
-* @return bool
-* If the target node exists, return true
-* Not exists, return false
-*/
-bool DeleteStock(Stock *pTarget)
+void cNode::SetAmount(int _amount)
 {
-	Stock *pLeft, *pRight;
+	mAmount						= _amount;
+}
 
-	if (pTarget == NULL || pTarget == gHead) 
+void cNode::SetIfChecked(bool _ifChecked)
+{
+	mIfChecked					= _ifChecked;
+}
+
+void cNode::SetNextNode(cNode *_nextNode)
+{
+	mpNextNode					= _nextNode;
+}
+
+
+void cNode::SetPrevNode(cNode *_prevNode)
+{
+	mpPrevNode					= _prevNode;
+}
+
+int	cNode::GetPrice()
+{
+	return mPrice;
+}
+
+int	cNode::GetCompanyNumber()
+{
+	return mCompNum;
+}
+
+int cNode::GetAmount()
+{
+	return mAmount;
+}
+
+bool cNode::GetIfChecked()
+{
+	return mIfChecked;
+}
+
+cNode* cNode::GetNextNode()
+{
+	return mpNextNode;
+}
+
+cNode* cNode::GetPrevNode()
+{
+	return mpPrevNode;
+}
+
+cNode* cStock::InsertNode(cNode *pTarget, cNode *insertStock)
+{
+	cNode *pNewNode = new cNode;
+	cNode *pRight = pTarget->GetNextNode();
+
+	*pNewNode = *insertStock;
+	
+	pNewNode->SetNextNode(pRight);
+	pNewNode->SetPrevNode(pTarget);
+
+	pTarget->SetNextNode(pNewNode);
+
+	if (pRight != NULL)
+		pRight->SetPrevNode(pNewNode);
+
+	return pNewNode;
+}
+
+bool cStock::DeleteNode(cNode *deleteStock)
+{
+	cNode *pLeft;
+	cNode *pRight;
+
+	if (deleteStock == NULL || deleteStock == mHead)
 		return false;
 
-	pLeft = pTarget->prev;
-	pRight = pTarget->next;
+	pLeft						= deleteStock->GetPrevNode();
+	pRight						= deleteStock->GetNextNode();
 
-	pLeft->next = pRight;
-	if (pRight) pRight->prev = pLeft;
+	pLeft->SetNextNode(pRight);
 
-	free(pTarget);
+	if (pRight)
+		pRight->SetPrevNode(pLeft);
+
+	delete deleteStock;
+
 	return true;
 }
-
-/** Add the node after the end
-* 사용되지 않습니다
-* @param *aStock
-* Node to add
-*
-* @return void
-*/
-void AppendStock(Stock *aStock)
+cNode* cStock::SearchNode(int index)
 {
-	Stock *pTail;
+	int ind = 0;
 
-	for (pTail = gHead; pTail->next; pTail = pTail->next){}
-	InsertStock(pTail, aStock);
-}
-
-/** Find the node of the index
-*
-* @param idx
-* Location of the node user want to find
-*
-* @return Stock pointer
-* Found the Node or NULL
-*/
-Stock *FindStock(int idx)
-{
-	Stock *now;
-	int index = 0;
-
-	for (now = gHead->next; now; now = now->next)
+	cNode *pNow;
+	
+	for (pNow = mHead->GetNextNode(); pNow; pNow = pNow->GetNextNode())
 	{
-		if (index == idx) 
-			return now;
-		index++;
+		if (ind == index)
+			return pNow;
+		ind++;
 	}
+
 	return NULL;
 }
 
-/** Deallocate all stock nodes
-*
-* @return void
-*/
-void DeallocateStock()
+cNode* cStock::GetHead()
 {
-	while (DeleteStock(gHead)) { ; }
-
-	free(gHead);
-	gHead = NULL;
+	return mHead;
+}
 }

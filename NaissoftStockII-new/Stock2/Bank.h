@@ -19,7 +19,7 @@ public:
 
 private:
 	double					mInter_rate;
-
+	
 public:
 	void					Init();
 

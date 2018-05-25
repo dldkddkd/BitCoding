@@ -16,7 +16,11 @@ class cDrawGame
 public:
 	cDrawGame() 
 	{
+<<<<<<< HEAD
 		mStockViewMode		= 0;
+=======
+		mStockViewMode = 0;
+>>>>>>> add_stock_system
 	}
 	virtual ~cDrawGame() {}
 
@@ -46,6 +50,8 @@ private:
 
 	cDrawGame				mDrawGame;
 
+	cPlayerMarket			mPlayerMarket;
+	
 private:
 	void					InitGame();
 
@@ -54,6 +60,13 @@ private:
 	void					SelectPauseMenu();
 
 	void					GetKey(char* c);
+
+	void					BuyMenu();
+	void					SellMenu();
+
+	void					ShowStockList();
+
+	void					ShowStatistics();
 
 public:
 	void					onStart();

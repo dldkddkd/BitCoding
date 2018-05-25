@@ -45,11 +45,17 @@ private:
 	//TDOD:: 추가 필요한 변수
 	//		 보유하고 있는 회사 주식
 	int						stock_deal_count;	// 주식거래 횟수
-
+	int						mStockAmount;
+	cStock					mStock;
+	
 public:
 	void					SetStockDealCount(int _count);
+	void					SetStockAmount(int _number);
 
 	int						GetStockDealCount();
+	int						GetStockAmount();
+
+	cStock					GetStock();
 };
 
 class cPlayer : public Core::cSingleton<cPlayer>

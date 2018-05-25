@@ -7,26 +7,61 @@
  *     Author : Naissoft
  *	   Remark : 2018.04.29 Á¶°æÁ¦.
  */
-struct Stock
-{
-	int price;
-	int company;
-	bool ifChecked;
+#pragma once
 
-	Stock *next;
-	Stock *prev;
+namespace GameSystem
+{
+class cNode
+{
+public:
+	cNode() {}
+	virtual ~cNode() {}
+private:
+	int							mPrice;
+	int							mCompNum;
+	int							mAmount;
+
+	bool						mIfChecked;
+
+	cNode*						mpNextNode;
+	cNode*						mpPrevNode;
+public:
+	void						SetPrice(int _price);
+	void						SetCompanyNumber(int _compNum);
+	void						SetAmount(int _amount);
+	void						SetIfChecked(bool _ifChecked);
+	void						SetNextNode(cNode *_nextNode);
+	void						SetPrevNode(cNode *_prevNode);
+
+	int							GetPrice();
+	int		 					GetCompanyNumber();
+	int							GetAmount();
+	bool						GetIfChecked();
+	cNode*						GetNextNode();
+	cNode*						GetPrevNode();
+
+
+};
+class cStock
+{
+public:
+	cStock() 
+	{
+		mHead = new cNode;
+		mHead->SetNextNode(NULL);
+		mHead->SetPrevNode(NULL);
+	}
+	virtual ~cStock() {}
+
+private:
+	cNode*						mHead;
+
+public:
+	cNode*						InsertNode(cNode* pTarget, cNode *insertStock);
+	bool						DeleteNode(cNode *deleteStock);
+	cNode*						SearchNode(int index);
+	
+	cNode*						GetHead();
 };
 
-extern Stock *gHead, *gNow, gTmp;
-
-void InitStock();
-
-Stock *InsertStock(Stock *Target, Stock *aStock);
-
-bool DeleteStock(Stock *Target);
-
-void AppendStock(Stock);
-
-Stock *FindStock(int);
-
-void DeallocateStock();
+}
