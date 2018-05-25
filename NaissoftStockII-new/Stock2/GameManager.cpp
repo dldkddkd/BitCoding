@@ -10,7 +10,8 @@
 
 namespace GameSystem
 {
-
+	int computer_money;
+	
 void cDrawGame::ShowMain()
 {
 	gotoxy(0, 1);
@@ -18,7 +19,6 @@ void cDrawGame::ShowMain()
 
 	if (cTimer::GetInstance()->GetTimerMode() == 1)
 		printf("\n W ±â´Ù¸®±â");
-
 	gotoxy(0, 5);
 	printf("\n ÇöÀç ³» µ· : %d¿ø, °±¾Æ¾ß ÇÒ µ· : %d¿ø\n", cPlayer::GetInstance()->GetMoney_info()->GetMoney(), cPlayer::GetInstance()->GetMoney_info()->GetLoan());
 	printf(" ÄÄÇ»ÅÍ µ· : %d¿ø\n\n\n", cAIPlayer::GetInstance()->GetMoney_info()->GetMoney());
@@ -272,6 +272,9 @@ void cGameManager::GetKey(char* c)
 
 void cGameManager::onStart()
 {
+	boolean mode = true;
+
+	computer_money = 5000000;
 	InitGame();
 	SelectStartMenu();
 
@@ -300,7 +303,13 @@ void cGameManager::onStart()
 		printf("¢¸");
 
 		SelectGameMenu();
-
+		if (!mode)
+			cCompanyManager::GetInstance()->ComputerSellStock(&computer_money);
+		if(mode)  
+			cCompanyManager::GetInstance()->ComputerBuyStock(&computer_money);
+		mode = !mode;
+		
+		
 		cTimer::GetInstance()->Update();
 	}
 }
