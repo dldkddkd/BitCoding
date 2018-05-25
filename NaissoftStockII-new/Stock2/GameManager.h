@@ -16,11 +16,7 @@ class cDrawGame
 public:
 	cDrawGame() 
 	{
-<<<<<<< HEAD
 		mStockViewMode		= 0;
-=======
-		mStockViewMode = 0;
->>>>>>> add_stock_system
 	}
 	virtual ~cDrawGame() {}
 
