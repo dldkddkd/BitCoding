@@ -14,7 +14,10 @@ namespace GameSystem
 class cDrawGame
 {
 public:
-	cDrawGame() {}
+	cDrawGame() 
+	{
+		mStockViewMode		= 0;
+	}
 	virtual ~cDrawGame() {}
 
 private:
