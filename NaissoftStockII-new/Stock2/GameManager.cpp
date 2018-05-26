@@ -277,8 +277,6 @@ void cGameManager::onStart()
 	InitGame();
 	SelectStartMenu();
 
-	cCompanyManager::GetInstance()->DrawNewspaper(mSelectComp);
-
 	// Game Loop Start.
 	while (true)
 	{
@@ -302,6 +300,7 @@ void cGameManager::onStart()
 		printf("¢¸");
 
 		SelectGameMenu();
+
 		
 		cTimer::GetInstance()->Update();
 	}
