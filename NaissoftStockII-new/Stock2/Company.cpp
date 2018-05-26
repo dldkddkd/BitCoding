@@ -239,7 +239,7 @@ void cCompany::DrawNewspaper()
 	gotoxy(88, 12);
 	printf("栲  廑  擨  傶     %d錯 %d橾", cTimer::GetInstance()->GetMonth() + 1, cTimer::GetInstance()->GetDay() + 1);
 	gotoxy(76, 13);
-	printf("收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收收");
+	printf("收收收收收收收收收收收收收收收收收收收");
 
 	textcolor(15);
 	gotoxy(76, 14);
@@ -269,6 +269,26 @@ void cCompany::DrawNewspaper()
 			else 
 				putchar(gGoodArticle[articleNo][i]);
 			
+			i++;
+		}
+	}
+	else
+	{
+		int					i = 0;
+		int					articleNo = rand() % MAX_ARTICLE;
+		int					cnt = 0;
+
+		printf(" %s", mCompanyName);
+		while (gBadArticle[articleNo][i] != '\0')
+		{
+			if (gBadArticle[articleNo][i] == '\n')
+			{
+				cnt++;
+				gotoxy(76, 16 + cnt);
+			}
+			else
+				putchar(gBadArticle[articleNo][i]);
+
 			i++;
 		}
 	}
