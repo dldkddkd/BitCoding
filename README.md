@@ -36,7 +36,7 @@ Please read [CONTRIBUTING.md](https://github.com/dlkdkddkd/Stock-II-new/CONTRIBU
 
 
 
-See also the list of [contributors](https://github.com/dlkdkddkd/Stock-II-new/CONTRIBUTORS.md) who participated in this project.
+See also the list of [contributors](CONTRIBUTORS.md) who participated in this project.
 
 
 
